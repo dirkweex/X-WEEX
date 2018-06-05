@@ -8,24 +8,22 @@
     </div>
     <div class="all-data">
       <div class="leftData">
-        <text>今日发电总量<br> 0.00 瓦时<br>累计总发电0.00瓦时</text>
+        <text>今日发电总量<br/> 0.00 瓦时<br/>累计总发电0.00瓦时</text>
       </div>
       <div style="width:1px;height:120px;margin:30px;background-color:#000" />
       <div class="rightData">
-        <text>今日发电总量<br> 0.00 瓦时<br>累计总发电0.00瓦时</text>
+        <text>今日发电总量<br/> 0.00 瓦时<br/>累计总发电0.00瓦时</text>
       </div>
 
     </div>
   </div>
 </template>
-
-
 <style scoped>
 .toobar {
     /* 垂直居中 */
     justify-content: center;
     align-items: center;
-    background-color: dodgerblue;
+    background-color: #1E90FF;
     height: 100px;
 }
 .title {
