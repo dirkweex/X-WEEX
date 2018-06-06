@@ -1,8 +1,8 @@
 <template>
     <div class="login-bg">
-        <image :style="imageStyle" src="./src/img/login_bg.jpg" />
+        <image :style="imageStyle" src="local:///login_bg" />
         <div class="login-wrapper">
-            <image class="logo" src="./src/img/logo.jpg" />
+            <image class="logo" src="local:///logo" />
             <text class="title-text">玩Android</text>
             <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名" autofocus="true" value="" />
             <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
