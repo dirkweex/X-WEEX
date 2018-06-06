@@ -1,79 +1,48 @@
-Created by IDE
-.DS_Store
-.idea/
+# Created by .ignore support plugin (hsz.mobi)
 *.iml
-
-docs
-
-.*
-!.gitignore
-!.eslintrc
-!.editorconfig
-!.babelrc
-
-# Node
-eros-widget/
-logs
-*.log
-npm-debug.log*
-.npm
-node_modules
-dist
-bower_components
-
-# Runtime data
-pids
-*.pid
-*.seed
-
-# Android
-# built application files
-*.apk
-*.ap_
-wxframework
-sdk
-bmwidget
-# files for the dex VM
-*.dex
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-
-# Local configuration file (sdk path, etc)
-local.properties
-sign.properties
-
-# Eclipse project files
-.classpath
 .project
+.settings/
 
-# Android Studio
-.idea/
-.gradle
-/*/local.properties
-/*/outd
-build/
-.idea/
-.gradle/
-android/playground/local.properties
+# logs
+*.log
+.idea
+npm-debug.log*
 
-/*/*/production
-*.iml
-*.iws
-*.ipr
-*~
-*.swp
-# END Android
+# dependencies
+/node_modules
 
-# IOS
+# cache files
+.DS_Store
+.npm
+
+# middle compile files
+/src/sprites/*
+
+# build results
+#/pub/
+#/entry/
+
+# local configs
+lauch.json
+.vscode
+
+
+#nei
+/mock/
+#/plugins/*
+dist/
+/temp/
+assets/tools/
+
+package-lock.json
+
+ignoreConfig.js
+
+
 # Xcode
-*/build/*
+#
+build/
 *.pbxuser
-*.pbxprog
 !default.pbxuser
 *.mode1v3
 !default.mode1v3
@@ -82,19 +51,10 @@ android/playground/local.properties
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-profile
+*.xccheckout
 *.moved-aside
 DerivedData
-.idea/
 *.hmap
-WeexiOSSDK
-Benmu-iOS-Library
-
-#CocoaPods
-Pods
-
-*.xccheckout
-*.xcworkspacedata
-*.xcworkspace
-Podfile.lock
-# END IOS
+*.ipa
+*.xcuserstate
+project.xcworkspace
