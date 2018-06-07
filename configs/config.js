@@ -135,4 +135,5 @@ const config = {
     zlib: false
   }
 }
+
 module.exports = config;

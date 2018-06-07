@@ -78,7 +78,16 @@ export default {
           message: '请输入密码。'
         })
       } else if (this.userNumber === 'weihao' && this.userPassword === '123') {
-        modal.toast({ message: '登录成功' })
+        // modal.toast({ message: '登录成功' })
+        console.log('will jupm')
+        navigator.push({
+          url:'http://192.168.0.101:8081/BottomTab.html',
+          animated:'true'
+        },event =>{
+          modal.toast({
+            message:'callback:'+ event
+          })
+        })
       } else {
         modal.toast({ message: '用户名或密码不正确，请重新输入！' })
       }
@@ -97,15 +106,14 @@ export default {
     register: function(event) {
         console.log('will jupm')
         navigator.push({
-          url:'http://192.168.12.75:8081/Register.html',
+          url:'http://192.168.0.101:8081/Register.html',
           animated:'true'
         },event =>{
           modal.toast({
             message:'callback:'+ event
           })
         })
-    }
-    ,
+    },
     wechat: function (){
       modal.toast({
         message:'微信登录！'
@@ -179,7 +187,7 @@ export default {
 }
 .remember-warpper {
     flex-direction: row;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     top: 20px;
     margin: 10px;
 }

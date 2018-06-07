@@ -30,13 +30,23 @@
 </template>
 <script>
 const modal = weex.requireModule('modal')
+const navigator = weex.requireModule('navigator')
 export default {
   methods: {
       // 返回登录界面
-      leftback: function() {
+      leftback: function(event) {
+        //   modal.toast({
+        //       message:'返回登录界面！'
+        //   })
+        console.log('will jupm')
+        navigator.push({
+          url:'http://192.168.0.101:8081/Login.html',
+          animated:'true'
+        },event =>{
           modal.toast({
-              message:'返回登录界面！'
+            message:'callback:'+ event
           })
+        })
       },
       // 获取验证码
       getiphonecode: function() {
@@ -81,7 +91,7 @@ export default {
     justify-content: center;
     /* align-items: center; */
     height: 100px;
-    width: 100%;
+   
 }
 .toolbar-text {
 
