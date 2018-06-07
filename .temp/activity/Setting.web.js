@@ -7,5 +7,5 @@ weex.init(Vue);
 
 
 
-const App = require('../../src/activity/Setting.vue');
+const App = require('..\\..\\src\\activity\\Setting.vue');
 new Vue(Vue.util.extend({el: '#root'}, App));
