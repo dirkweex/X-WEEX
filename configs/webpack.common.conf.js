@@ -8,8 +8,12 @@ const vueLoaderConfig = require('./vue-loader.conf');
 const vueWebTemp = helper.rootNode(config.templateDir);
 const hasPluginInstalled = fs.existsSync(helper.rootNode(config.pluginFilePath));
 const isWin = /^win/.test(process.platform);
-const webEntry = {};
-const weexEntry = {};
+const webEntry = {
+  // getEntryFile();
+};
+const weexEntry = {
+
+};
 
 // Wraping the entry file for web.
 const getWebEntryFileContent = (entryPath, vueFilePath) => {
@@ -67,6 +71,21 @@ const getEntryFile = (dir) => {
     weexEntry[basename] = templatePathForNative;
   })
 }
+// const getEntryFile = () => {
+//   const entryFile = path.join(vueWebTemp,config.entryFilePath)
+//   const routerFile = path.join(vueWebTemp,config.routerFilePath)
+//   fs.outputFileSync(entryFile,getWebEntryFileContent(helper.root(config.entryFilePath),routerFile));
+//   fs.outputFileSync(routerFile,getRouterFileContent(helper.root(config.routerFilePath)));
+//   const registerFilePath = 'Register.js'
+//   const registerFile = path.join(vueWebTemp,registerFilePath)
+//   fs.outputFileSync(registerFile,getWebEntryFileContent(helper.root(registerFilePath),routerFile));
+
+//   return {
+//     index: entryFile,
+//     Register:registerFile,
+//   }
+  
+// }
 
 // Generate an entry file array before writing a webpack configuration
 getEntryFile();

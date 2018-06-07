@@ -1,3 +1,3 @@
 <template>
-  <text class="message">我是 BottomTab !</text>
+  <text class="message">我是试试 BottomTab !</text>
 </template>

@@ -1,45 +1,44 @@
 <template>
-    <div class="login-bg">
-        <image :style="imageStyle" src="/web/assets/img/login_bg.png" />
-        <div class="login-warpper">
-            <image class="logo" src="/web/assets/img/logo_login.png" />
-            <text class="title-text">登录</text>
-            <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="true" value="" />
-            <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
-            <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" value="" />
-            <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
-            <div class="remember-warpper">
-            <image class="remember-img" @click="remember" src="/web/assets/img/select1_select.png"/>
-            <text class="remember-text" >记住我</text>
-               <text class="forget-text" @click="forget">忘记密码？</text>
-            </div>
-  
-            <text class="button" @click="login">登录</text>
-            <text class="button" @click="register">注册</text>
+  <div class="login-bg">
+    <image :style="imageStyle" src="/web/assets/img/login_bg.png" />
+    <div class="login-warpper">
+      <image class="logo" src="/web/assets/img/logo_login.png" />
+      <text class="title-text">登录</text>
+      <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="true" value="" />
+      <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
+      <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" value="" />
+      <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
+      <div class="remember-warpper">
+        <image class="remember-img" @click="remember" src="/web/assets/img/select1_select.png" />
+        <text class="remember-text">记住我</text>
+        <text class="forget-text" @click="forget">忘记密码？</text>
+      </div>
 
-            <div class="chat-warpper">
-              <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
-            <text class="chat-text">社交账号登录</text>
-            <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
-              </div>       
-                <div class="chat-warpper">
-                   <image class="chat-img" @click="wechat" src="/web/assets/img/wechat.png"/>  
-                  <image class="chat-img" @click="qq" src="/web/assets/img/qq.png"/>
-                   <image class="chat-img" @click="weibo" src="/web/assets/img/weibo.png"/>
-          
-                 
-                  
-                  </div>     
-            
-        </div>
-        <!-- <div class="input-wrapper">
+      <text class="button" @click="login">登录</text>
+      <text class="button" @click="register">注册</text>
+
+      <div class="chat-warpper">
+        <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
+        <text class="chat-text">社交账号登录</text>
+        <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
+      </div>
+      <div class="chat-warpper">
+        <image class="chat-img" @click="wechat" src="/web/assets/img/wechat.png" />
+        <image class="chat-img" @click="qq" src="/web/assets/img/qq.png" />
+        <image class="chat-img" @click="weibo" src="/web/assets/img/weibo.png" />
+
+      </div>
+
+    </div>
+    <!-- <div class="input-wrapper">
                         <text class="input-forget" onclick="findPassword">找回密码</text>
                         <text class="input-register" onclick="register">立即注册</text>
                     </div> -->
-    </div>
+  </div>
 </template>
 <script>
 const modal = weex.requireModule('modal')
+const navigator = weex.requireModule('navigator')
 export default {
   data () {
     return {
@@ -84,18 +83,48 @@ export default {
         })
       } else if (this.userNumber === 'weihao' && this.userPassword === '123') {
         modal.toast({ message: '登录成功' })
+      
       } else {
         modal.toast({ message: '用户名或密码不正确，请重新输入！' })
       }
     },
+  
     // 注册
     register: function () {
       modal.toast({
-        message: 'Hello，注册暂时未开发，后续我会进行完善。'
+        // message: 'Hello，注册暂时未开发，后续我会进行完善。'
+          navigator:push({url:this.getJumpBaseUrl('Register')})
       })
       // navigator.push({
       //     url: "http://192.168.12.75:8081/dist/Register.js"
       // })
+    },
+      getJumpBaseUrl(toUrl){
+      var bundleUrl = weex.config.bundleUrl;
+      bundleUrl = new String(bundleUrl);
+      var navigator;
+      var native;
+      if(WXEnvironment.platform ==='Android'){
+        nativeBase = 'file://assets/dist/';
+        native = nativeBase+toUrl+'.js';
+      } else if(WXEnvironment.platform==='IOS'){
+        nativeBase=bundleUrl.substring(0,bundleUrl.lastIndexOf('/')+1);
+        native = nativeBase+toUrl+'.js';
+      } else{
+        var host='192.168.12.75:8081';
+        var matches=/\/\/([^\/]+?)\//.exec(bundleUrl)
+        if(matches && matches.length>=2){
+          host=matches[1];
+        }
+        // 此处需注意一下，tabbar用的直接是Jsbundle的路径，但是navigator是直接跳转到新页面上的。
+        if(typeof window ==='object'){
+          nativeBase='http://'+host+'/';
+        } else{
+          nativeBase ='http://'+host+'/';
+        }
+        native+nativeBase+toUrl+'.html';
+      }
+      return native;
     },
     wechat: function (){
       modal.toast({
@@ -118,100 +147,95 @@ export default {
 </script>
 <style scoped >
 .login-bg {
-  flex: 1;
+    flex: 1;
 }
 .login-warpper {
-  justify-content: center;
-  align-items: center;
-  margin-top: 180px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 180px;
 }
 .logo {
-  width: 160px;
-  height: 160px;
+    width: 160px;
+    height: 160px;
 }
 .title-text {
-  height: 80px;
-  width: 550px;
-  text-align: center;
-  color: rgb(235, 223, 223);
-  margin-top: 35px;
-  font-size: 55px;
+    height: 80px;
+    width: 550px;
+    text-align: center;
+    color: rgb(235, 223, 223);
+    margin-top: 35px;
+    font-size: 55px;
 }
 .button {
-  font-size: 35px;
-  width: 500px;
-  text-align: center;
-  padding: 15px;
-  border-width: 2px;
-  border-style: solid;
-  color: #3FA2F9;
-  border-color: #ffffff;
-  background-color: #ffffff;
-  border-radius: 50px;
-  margin-top: 50px;
+    font-size: 35px;
+    width: 500px;
+    text-align: center;
+    padding: 15px;
+    border-width: 2px;
+    border-style: solid;
+    color: #3fa2f9;
+    border-color: #ffffff;
+    background-color: #ffffff;
+    border-radius: 50px;
+    margin-top: 50px;
 }
 .input {
-  font-size: 35px;
-  height: 80px;
-  width: 550px;
-  padding-left: 50px;
-  color: #ffffff;
-  placeholder-color:#A4D3FC;
-  padding-top: 50px;
-  margin-bottom: 35px;
-  background-color: rgba(0, 0, 0, 0);
-  /* outline: none; */
+    font-size: 35px;
+    height: 80px;
+    width: 550px;
+    padding-left: 50px;
+    color: #ffffff;
+    placeholder-color: #a4d3fc;
+    padding-top: 50px;
+    margin-bottom: 35px;
+    background-color: rgba(0, 0, 0, 0);
+    /* outline: none; */
 }
 .input-img {
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  width: 50px;
-  height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
 }
-.remember-warpper{
-  flex-direction: row;
-  justify-content: flex-start;
-  top: 20px;
-  margin: 10px;
- 
- 
-
+.remember-warpper {
+    flex-direction: row;
+    justify-content: flex-start;
+    top: 20px;
+    margin: 10px;
 }
-.remember-img{
-margin-top: 2px;
-  width: 35px;
-  height: 35px;
+.remember-img {
+    margin-top: 2px;
+    width: 35px;
+    height: 35px;
 }
-.remember-text{
-margin-left: 10px;
-color: #A4D3FC;
-font-size: 27px;
+.remember-text {
+    margin-left: 10px;
+    color: #a4d3fc;
+    font-size: 27px;
 }
-.forget-text{
-margin-left: 200px;
-color: #A4D3FC;
-font-size: 27px;
+.forget-text {
+    margin-left: 200px;
+    color: #a4d3fc;
+    font-size: 27px;
 }
-.chat-warpper{
-   flex-direction: row;
-  justify-content: space-between;
-  top: 80px;
-
+.chat-warpper {
+    flex-direction: row;
+    justify-content: space-between;
+    top: 80px;
 }
-.chat-text{
-margin-left: 35px;
-margin-right: 35px;
-color: #A4D3FC;
-font-size: 25px;
+.chat-text {
+    margin-left: 35px;
+    margin-right: 35px;
+    color: #a4d3fc;
+    font-size: 25px;
 }
-.chat-line{
-  margin-top: 15px;
+.chat-line {
+    margin-top: 15px;
 }
-.chat-img{
-
-  margin: 30px;
-  width: 60px;
-  height: 60px;
+.chat-img {
+    margin: 30px;
+    width: 60px;
+    height: 60px;
 }
 </style>
