@@ -1,20 +1,12 @@
 <template>
     <div class="wrapper">
         <div class="register">
-            <div class="toolbar-warpper">
-               
-                <!-- <div class="title"> -->
+            <div class="toolbar-warpper">                <!-- <div class="title"> -->
                 <text class="toolbar-text">注册</text>
                 <!-- </div> -->
-                
-               
             </div>
-            <div class="toolbar-leftimage-warpper">
-  <image class="toolbar-leftimage" @click="leftback" src="/web/assets/img/arrow_left.png" />
-
-            </div>
-            <input v-model="userName" type="text" class="input" @change="changeUserName" placeholder="用户名(英文、数字和_)" autofocus="true" value="" />
-            <div style="height:1px;background-color:#A5A5A5" />
+            <div class="toolbar-leftimage-warpper">  <image class="toolbar-leftimage" @click="leftback" src="/web/assets/img/arrow_left.png" />            </div>
+            <input v-model="userName" type="text" class="input" @change="changeUserName" placeholder="用户名(英文、数字和_)" autofocus="true" value="" />            <div style="height:1px;background-color:#A5A5A5" />
             <input v-model="phoneNumber" type="tel" class="input" @change="changePhoneNumber" placeholder="手机号" autofocus="true" value="">
             <div style="height:1px;background-color:#A5A5A5" />
             <input v-model="Email" type="email" class="input" @change="changeEmail" placeholder="邮箱" autofocus="true" value="">
@@ -23,7 +15,6 @@
             <div style="height:1px;background-color:#A5A5A5" />
             <input v-model="ConfirmPassword" type="password" class="input" @change="changeConfirmPassword" placeholder="确认密码" autofocus="true" value="">
             <div style="height:1px;background-color:#A5A5A5" />
-
             <div class="code-warpper">
             <input v-model="IdentifyingCode" type="text" class="input" @change="changeIdentifyingCode" placeholder="验证码" autofocus="true" value="">
             <text class="code-text" @click="getiphonecode">获取验证码</text>
@@ -33,13 +24,10 @@
             <image class="agree-img" @click="agree" src="/web/assets/img/select2_normal.png"/>
             <text class="agree-text">同意注册条款</text>
             </div>
-
             <text class="button" @click="register">注册</text>
         </div>
     </div>
-
 </template>
-
 <script>
 const modal = weex.requireModule('modal')
 export default {
@@ -58,7 +46,6 @@ export default {
       },
       // 同意注册条款
       agree: function() {
-
           modal.toast({
               message:'同意注册条款！'
           })
@@ -69,12 +56,9 @@ export default {
               message:'注册！'
           })
       }
-
   }
 }
 </script>
-
-
 <style scoped >
 .warpper {
     /* background-image: linear-gradient(to bottom, #f35bb6, #7b79f9); */
@@ -138,7 +122,6 @@ margin-left: 35px;
     flex-direction: row;
     align-items: center;
 }
-
 .agree-warpper{
 margin-top: 40px;
    margin-left: 50px;
@@ -147,10 +130,7 @@ margin-top: 40px;
 }
 .code-text {
 color: #509BD7;
-
-
 }
-
 .agree-img {
 margin-top: 3px;
       width: 35px;

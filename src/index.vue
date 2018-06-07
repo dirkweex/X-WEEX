@@ -13,7 +13,7 @@
 // 第二步: 使用import xxx form "./activity/xxx.vue" 方式注入页面。
 
 // import HelloWorld from "./components/HelloWorld.vue";
-import Login from './activity/Login.vue'
+import Login from './Login.vue'
 // import Register from "./activity/Register.vue";
 // import Home from "./activity/Home.vue";
 // import BottomTab from './activity/BottomTab.vue'

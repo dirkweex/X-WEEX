@@ -94,14 +94,14 @@ export default {
     //   // })
     // },
 
-    register(event) {
+    register: function(event) {
         console.log('will jupm')
         navigator.push({
-          url:'http://192.168.12.75:8081/dist/Register.js',
+          url:'http://192.168.12.75:8081/Register.html',
           animated:'true'
         },event =>{
           modal.toast({
-            message:'callback:'+event
+            message:'callback:'+ event
           })
         })
     }
