@@ -1,15 +1,15 @@
 <template>
     <div class="login-bg">
-        <image :style="imageStyle" src="./src/img/login_bg.png" />
-        <div class="login-wrapper">
-            <image class="logo" src="./src/img/logo_login.png" />
+        <image :style="imageStyle" src="/web/assets/img/login_bg.png" />
+        <div class="login-warpper">
+            <image class="logo" src="/web/assets/img/logo_login.png" />
             <text class="title-text">登录</text>
             <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="true" value="" />
             <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
             <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" value="" />
             <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
-            <div class="remember-wrapper">
-            <image class="remember-img" @click="remember" src="./src/img/select1_select.png"/>
+            <div class="remember-warpper">
+            <image class="remember-img" @click="remember" src="/web/assets/img/select1_select.png"/>
             <text class="remember-text" >记住我</text>
                <text class="forget-text" @click="forget">忘记密码？</text>
             </div>
@@ -17,15 +17,15 @@
             <text class="button" @click="login">登录</text>
             <text class="button" @click="register">注册</text>
 
-            <div class="chat-wrapper">
+            <div class="chat-warpper">
               <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
             <text class="chat-text">社交账号登录</text>
             <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
               </div>       
-                <div class="chat-wrapper">
-                   <image class="chat-img" @click="wechat" src="./src/img/wechat.png"/>  
-                  <image class="chat-img" @click="qq" src="./src/img/qq.png"/>
-                   <image class="chat-img" @click="weibo" src="./src/img/weibo.png"/>
+                <div class="chat-warpper">
+                   <image class="chat-img" @click="wechat" src="/web/assets/img/wechat.png"/>  
+                  <image class="chat-img" @click="qq" src="/web/assets/img/qq.png"/>
+                   <image class="chat-img" @click="weibo" src="/web/assets/img/weibo.png"/>
           
                  
                   
@@ -120,7 +120,7 @@ export default {
 .login-bg {
   flex: 1;
 }
-.login-wrapper {
+.login-warpper {
   justify-content: center;
   align-items: center;
   margin-top: 180px;
@@ -169,7 +169,7 @@ export default {
   width: 50px;
   height: 50px;
 }
-.remember-wrapper{
+.remember-warpper{
   flex-direction: row;
   justify-content: flex-start;
   top: 20px;
@@ -193,7 +193,7 @@ margin-left: 200px;
 color: #A4D3FC;
 font-size: 27px;
 }
-.chat-wrapper{
+.chat-warpper{
    flex-direction: row;
   justify-content: space-between;
   top: 80px;
