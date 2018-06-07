@@ -1,15 +1,36 @@
 <template>
     <div class="login-bg">
-        <image :style="imageStyle" src="local:///login_bg" />
+        <image :style="imageStyle" src="./src/img/login_bg.png" />
         <div class="login-wrapper">
-            <image class="logo" src="https://github.com/weihao2/WanAndroid-Weex/blob/master/img/logo.jpg" />
-            <text class="title-text">玩Android</text>
-            <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名" autofocus="true" value="" />
+            <image class="logo" src="./src/img/logo_login.png" />
+            <text class="title-text">登录</text>
+            <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="true" value="" />
             <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
-            <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码" value="" />
+            <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" value="" />
             <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
+            <div class="remember-wrapper">
+            <image class="remember-img" @click="remember" src="./src/img/select1_select.png"/>
+            <text class="remember-text" >记住我</text>
+               <text class="forget-text" @click="forget">忘记密码？</text>
+            </div>
+  
             <text class="button" @click="login">登录</text>
             <text class="button" @click="register">注册</text>
+
+            <div class="chat-wrapper">
+              <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
+            <text class="chat-text">社交账号登录</text>
+            <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
+              </div>       
+                <div class="chat-wrapper">
+                   <image class="chat-img" @click="wechat" src="./src/img/wechat.png"/>  
+                  <image class="chat-img" @click="qq" src="./src/img/qq.png"/>
+                   <image class="chat-img" @click="weibo" src="./src/img/weibo.png"/>
+          
+                 
+                  
+                  </div>     
+            
         </div>
         <!-- <div class="input-wrapper">
                         <text class="input-forget" onclick="findPassword">找回密码</text>
@@ -40,6 +61,17 @@ export default {
     changeUserPassword: function (event) {
       this.userPassword = event.value
     },
+    // 记住我
+    remember: function(){
+      modal.toast({
+        message:'记住我！'
+      })
+    },
+    forget: function(){
+      modal.toast({
+        message:'忘记密码！'
+      })
+    },
     // 登录
     login: function () {
       if (this.userNumber.length < 1) {
@@ -64,13 +96,23 @@ export default {
       // navigator.push({
       //     url: "http://192.168.12.75:8081/dist/Register.js"
       // })
+    },
+    wechat: function (){
+      modal.toast({
+        message:'微信登录！'
+      })
+    },
+    qq: function (){
+      modal.toast({
+          message:'QQ登录！'
+      })
+    },
+    weibo: function(){
+      modal.toast({
+        message:'微博登录！'
+      })
     }
-    // //找回密码
-    // fingPassword: function() {
-    //     modal.toast({
-    //         message: "Hello，找回密码暂时未开发，后续我们会进行完善。"
-    //     })
-    // },
+ 
   }
 }
 </script>
@@ -84,8 +126,8 @@ export default {
   margin-top: 180px;
 }
 .logo {
-  width: 600px;
-  height: 300px;
+  width: 160px;
+  height: 160px;
 }
 .title-text {
   height: 80px;
@@ -96,27 +138,27 @@ export default {
   font-size: 55px;
 }
 .button {
-  font-size: 50px;
+  font-size: 35px;
   width: 500px;
   text-align: center;
   padding: 15px;
   border-width: 2px;
   border-style: solid;
-  color: #008000;
+  color: #3FA2F9;
   border-color: #ffffff;
   background-color: #ffffff;
   border-radius: 50px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 .input {
   font-size: 35px;
   height: 80px;
   width: 550px;
-  padding-left: 90px;
+  padding-left: 50px;
   color: #ffffff;
-  /* placeholder-color:rgb(235, 223, 223); */
+  placeholder-color:#A4D3FC;
   padding-top: 50px;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   background-color: rgba(0, 0, 0, 0);
   /* outline: none; */
 }
@@ -126,5 +168,50 @@ export default {
   left: 15px;
   width: 50px;
   height: 50px;
+}
+.remember-wrapper{
+  flex-direction: row;
+  justify-content: flex-start;
+  top: 20px;
+  margin: 10px;
+ 
+ 
+
+}
+.remember-img{
+margin-top: 2px;
+  width: 35px;
+  height: 35px;
+}
+.remember-text{
+margin-left: 10px;
+color: #A4D3FC;
+font-size: 27px;
+}
+.forget-text{
+margin-left: 200px;
+color: #A4D3FC;
+font-size: 27px;
+}
+.chat-wrapper{
+   flex-direction: row;
+  justify-content: space-between;
+  top: 80px;
+
+}
+.chat-text{
+margin-left: 35px;
+margin-right: 35px;
+color: #A4D3FC;
+font-size: 25px;
+}
+.chat-line{
+  margin-top: 15px;
+}
+.chat-img{
+
+  margin: 30px;
+  width: 60px;
+  height: 60px;
 }
 </style>
