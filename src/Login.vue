@@ -81,7 +81,7 @@ export default {
         // modal.toast({ message: '登录成功' })
         console.log('will jupm')
         navigator.push({
-          url:'http://192.168.0.101:8081/BottomTab.html',
+          url:'http://192.168.12.75:8081/BottomTab.html',
           animated:'true'
         },event =>{
           modal.toast({
@@ -106,7 +106,7 @@ export default {
     register: function(event) {
         console.log('will jupm')
         navigator.push({
-          url:'http://192.168.0.101:8081/Register.html',
+          url:'http://192.168.12.75:8081/Register.html',
           animated:'true'
         },event =>{
           modal.toast({
