@@ -58,8 +58,34 @@
       <image class="year-img" src="/web/assets/img/calendar.png" />
     </div>
 
+    <!-- 分割线 -->
+    <div style="height:20px;margin:30px;background-color:#EEEEEE" ></div>
+
+    <div>
+      <list>
+        <cell v-for="rum in lists" >
+          <div class="panel">
+            <text class="text">{{rum}}</text>
+          </div>
+        </cell>
+     </list>
+    </div>
   </div>
+
 </template>
+
+<script>
+
+export default {
+    data() {
+        return {
+            lists: [1, 2, 3, 4, 5, 6, 7, 9, 10]
+        };
+    }
+};
+</script>
+
+
 <style scoped>
 .toobar {
     /* 垂直居中 */
@@ -120,11 +146,10 @@
     flex-direction: row;
     justify-content: space-around;
 }
-.button-warpper2{
-     flex-direction: row;
+.button-warpper2 {
+    flex-direction: row;
     /* justify-content: space-around; */
     margin-top: 30px;
-    
 }
 .button {
     font-size: 30px;
@@ -139,7 +164,7 @@
     border-radius: 50px;
 }
 .button2 {
-  margin-left: 30px;
+    margin-left: 30px;
     font-size: 30px;
     width: 90px;
     height: 90px;
@@ -148,12 +173,11 @@
     border-style: solid;
     color: #ffffff;
     border-color: #ffffff;
-    background-color:#31D7FE;
+    background-color: #31d7fe;
     border-radius: 100px;
-
 }
 .button3 {
-  margin-left: 60px;
+    margin-left: 60px;
     font-size: 30px;
     width: 90px;
     height: 90px;
@@ -162,14 +186,30 @@
     border-style: solid;
     color: #ffffff;
     border-color: #ffffff;
-    background-color:#31D7FE;
+    background-color: #31d7fe;
     border-radius: 100px;
-
 }
-.year-img{
-  margin-top: 15px;
-  margin-left: 60px;
-  width: 60px;
-  height: 60px;
+.year-img {
+    margin-top: 15px;
+    margin-left: 60px;
+    width: 60px;
+    height: 60px;
+}
+.panel {
+    width: 600px;
+    height: 250px;
+    margin-left: 75px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    justify-content: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #31d7fe;
+    background-color: #1e90ff;
+}
+.text {
+    font-size: 50px;
+    text-align: center;
+    color: #FFFFFF;
 }
 </style>
