@@ -8,19 +8,20 @@ export default {
     tabTitles: [
       {
         title: '主页',
-        icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
+        icon: '/web/assets/img/home_normal.png',
+        activeIcon: '/web/assets/img/home_select.png'
       },
       {
         title: '消息',
-        icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
+        icon: '/web/assets/img/message_normal.png',
+        activeIcon: '/web/assets/img/message_select.png'
       },
       {
         title: '设置',
-        icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png',
-        badge: 5
+        icon: '/web/assets/img/setting_normal.png',
+        activeIcon: '/web/assets/img/setting_select.png',
+        //设置类似于QQ聊天界面右上角显示消息的数量
+        // badge: 5
     //   },
     //   {
     //     title: '我的主页',
