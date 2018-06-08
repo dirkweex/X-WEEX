@@ -33,63 +33,66 @@
   </div>
 </template>
 <script>
-const modal = weex.requireModule('modal')
-const navigator = weex.requireModule('navigator')
+const modal = weex.requireModule("modal");
+const navigator = weex.requireModule("navigator");
 export default {
-  data () {
+  data() {
     return {
-      userNumber: '',
-      userPassword: '',
+      userNumber: "",
+      userPassword: "",
       imageStyle: {
-        position: 'absolute',
-        width: '750px',
+        position: "absolute",
+        width: "750px",
         height:
           weex.config.env.deviceHeight * 750 / weex.config.env.deviceWidth +
-          'px'
+          "px"
       }
-    }
+    };
   },
   methods: {
-    changeUserNumber: function (event) {
-      this.userNumber = event.value
+    changeUserNumber: function(event) {
+      this.userNumber = event.value;
     },
-    changeUserPassword: function (event) {
-      this.userPassword = event.value
+    changeUserPassword: function(event) {
+      this.userPassword = event.value;
     },
     // 记住我
-    remember: function(){
+    remember: function() {
       modal.toast({
-        message:'记住我！'
-      })
+        message: "记住我！"
+      });
     },
-    forget: function(){
+    forget: function() {
       modal.toast({
-        message:'忘记密码！'
-      })
+        message: "忘记密码！"
+      });
     },
     // 登录
-    login: function () {
+    login: function() {
       if (this.userNumber.length < 1) {
         modal.toast({
-          message: '请输入手机号。'
-        })
+          message: "请输入手机号。"
+        });
       } else if (this.userPassword.length < 1) {
         modal.toast({
-          message: '请输入密码。'
-        })
-      } else if (this.userNumber === 'weihao' && this.userPassword === '123') {
+          message: "请输入密码。"
+        });
+      } else if (this.userNumber === "weihao" && this.userPassword === "123") {
         // modal.toast({ message: '登录成功' })
-        console.log('will jupm')
-        navigator.push({
-          url:'http://192.168.12.75:8081/BottomTab.html',
-          animated:'true'
-        },event =>{
-          modal.toast({
-            message:'callback:'+ event
-          })
-        })
+        console.log("will jupm");
+        navigator.push(
+          {
+            url: "http://192.168.0.101:8081/BottomTab.html",
+            animated: "true"
+          },
+          event => {
+            modal.toast({
+              message: "callback:" + event
+            });
+          }
+        );
       } else {
-        modal.toast({ message: '用户名或密码不正确，请重新输入！' })
+        modal.toast({ message: "用户名或密码不正确，请重新输入！" });
       }
     },
     // 注册
@@ -104,125 +107,128 @@ export default {
     // },
 
     register: function(event) {
-        console.log('will jupm')
-        navigator.push({
-          url:'http://192.168.12.75:8081/Register.html',
-          animated:'true'
-        },event =>{
+      console.log("will jupm");
+      navigator.push(
+        {
+          url: "http://192.168.0.101:8081/Register.html",
+          animated: "true"
+        },
+        event => {
           modal.toast({
-            message:'callback:'+ event
-          })
-        })
+            message: "callback:" + event
+          });
+        }
+      );
     },
-    wechat: function (){
+    wechat: function() {
       modal.toast({
-        message:'微信登录！'
-      })
+        message: "微信登录！"
+      });
     },
-    qq: function (){
+    qq: function() {
       modal.toast({
-          message:'QQ登录！'
-      })
+        message: "QQ登录！"
+      });
     },
-    weibo: function(){
+    weibo: function() {
       modal.toast({
-        message:'微博登录！'
-      })
-    } 
+        message: "微博登录！"
+      });
+    }
   }
-}
+};
 </script>
 <style scoped >
 .login-bg {
-    flex: 1;
+  flex: 1;
 }
 .login-warpper {
-    justify-content: center;
-    align-items: center;
-    margin-top: 180px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 180px;
 }
 .logo {
-    width: 160px;
-    height: 160px;
+  width: 160px;
+  height: 160px;
 }
 .title-text {
-    height: 80px;
-    width: 550px;
-    text-align: center;
-    color: rgb(235, 223, 223);
-    margin-top: 35px;
-    font-size: 55px;
+  height: 80px;
+  width: 550px;
+  text-align: center;
+  color: rgb(235, 223, 223);
+  margin-top: 35px;
+  font-size: 55px;
 }
 .button {
-    font-size: 35px;
-    width: 500px;
-    text-align: center;
-    padding: 15px;
-    border-width: 2px;
-    border-style: solid;
-    color: #3fa2f9;
-    border-color: #ffffff;
-    background-color: #ffffff;
-    border-radius: 50px;
-    margin-top: 50px;
+  font-size: 35px;
+  width: 500px;
+  text-align: center;
+  padding: 15px;
+  border-width: 2px;
+  border-style: solid;
+  color: #3fa2f9;
+  border-color: #ffffff;
+  background-color: #ffffff;
+  border-radius: 50px;
+  margin-top: 50px;
 }
 .input {
-    font-size: 35px;
-    height: 80px;
-    width: 550px;
-    padding-left: 50px;
-    color: #ffffff;
-    placeholder-color: #a4d3fc;
-    padding-top: 50px;
-    margin-bottom: 35px;
-    background-color: rgba(0, 0, 0, 0);
-    /* outline: none; */
+  font-size: 35px;
+  height: 80px;
+  width: 550px;
+  padding-left: 50px;
+  color: #000000;
+  placeholder-color: #a4d3fc;
+  padding-top: 50px;
+  margin-bottom: 35px;
+  background-color: rgba(0, 0, 0, 0);
+  /* outline: none; */
 }
 .input-img {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    width: 50px;
-    height: 50px;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
 }
 .remember-warpper {
-    flex-direction: row;
-    /* justify-content: flex-start; */
-    top: 20px;
-    margin: 10px;
+  flex-direction: row;
+  /* justify-content: flex-start; */
+  top: 20px;
+  margin: 10px;
 }
 .remember-img {
-    margin-top: 2px;
-    width: 35px;
-    height: 35px;
+  margin-top: 2px;
+  width: 35px;
+  height: 35px;
 }
 .remember-text {
-    margin-left: 10px;
-    color: #a4d3fc;
-    font-size: 27px;
+  margin-left: 10px;
+  color: #a4d3fc;
+  font-size: 27px;
 }
 .forget-text {
-    margin-left: 200px;
-    color: #a4d3fc;
-    font-size: 27px;
+  margin-left: 200px;
+  color: #a4d3fc;
+  font-size: 27px;
 }
 .chat-warpper {
-    flex-direction: row;
-    justify-content: space-between;
-    top: 80px;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 80px;
 }
 .chat-text {
-    margin-left: 35px;
-    margin-right: 35px;
-    color: #a4d3fc;
-    font-size: 25px;
+  margin-left: 35px;
+  margin-right: 35px;
+  color: #a4d3fc;
+  font-size: 25px;
 }
 .chat-line {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 .chat-img {
-    margin: 30px;
-    width: 60px;
-    height: 60px;
+  margin: 30px;
+  width: 60px;
+  height: 60px;
 }
 </style> 

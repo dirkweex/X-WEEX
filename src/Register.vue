@@ -40,7 +40,7 @@ export default {
         //   })
         console.log('will jupm')
         navigator.push({
-          url:'http://192.168.12.75:8081/Login.html',
+          url:'http://192.168.0.101:8081/Login.html',
           animated:'true'
         },event =>{
           modal.toast({
@@ -82,7 +82,7 @@ export default {
     align-items: center;
     background-color: #1e90ff;
     height: 100px;
-    width: 100%;
+    width: 100px;
 
 }
 .toolbar-leftimage-warpper{

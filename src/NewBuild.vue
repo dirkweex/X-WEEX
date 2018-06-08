@@ -14,7 +14,7 @@
 
         <div class="b">
             <image class="b-img" src="/web/assets/img/search.png" />
-            <text class="b-text">咦？还没有自己的电站？<br><br> 立即新建一个吧！</text>
+            <text class="b-text">咦？还没有自己的电站？<br/><br/> 立即新建一个吧！</text>
             <div class="b-button">
                 <button class="b-button-text">新建电站</button>
                 <image class="b-button-img" src="/web/assets/img/add@2x.png" />
