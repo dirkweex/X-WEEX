@@ -59,28 +59,42 @@
     </div>
 
     <!-- 分割线 -->
-    <div style="height:20px;margin:30px;background-color:#EEEEEE" ></div>
+    <div style="height:20px;margin:30px;background-color:#EEEEEE"></div>
 
     <div>
-      <list>
-        <cell v-for="rum in lists" >
+      <list @loadmore="fetch" loadmoreoffset="10">
+        <cell v-for="rum in lists">
           <div class="panel">
             <text class="text">{{rum}}</text>
           </div>
         </cell>
-     </list>
+      </list>
     </div>
   </div>
 
 </template>
 
 <script>
-
+const modal = weex.requireModule("modal");
 export default {
     data() {
         return {
-            lists: [1, 2, 3, 4, 5, 6, 7, 9, 10]
+            lists: [1, 2, 3, 4, 5, 6, 7, 9, 10,11,12,13,14,1,1,16,17,18,19,10,20]
         };
+    },
+    methods: {
+        fetch(event) {
+            modal.toast({
+                meassger: "loadmore",
+                duration: 1
+            });
+            setTimeout(() => {
+                const length = this.lists.length;
+                for (let i = length; i < length + 4; i++) {
+                    this.lists.push(i + 1);
+                }
+            },800);
+        }
     }
 };
 </script>
@@ -210,6 +224,6 @@ export default {
 .text {
     font-size: 50px;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 </style>
