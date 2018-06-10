@@ -82,7 +82,7 @@ export default {
     align-items: center;
     background-color: #1e90ff;
     height: 100px;
-    width: 100px;
+    /* width: 100px; */
 
 }
 .toolbar-leftimage-warpper{

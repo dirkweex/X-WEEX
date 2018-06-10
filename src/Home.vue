@@ -1,5 +1,5 @@
 <template>
-  <div class="hemo-wrapper">
+  <div class="home-wrapper">
     <!-- 我的电站 -->
     <div class="toobar">
       <div class="title">
@@ -121,6 +121,11 @@ export default {
 
 
 <style scoped>
+.home-wrapper {
+  background-color: #ffffff;
+  flex: 1;
+}
+
 .toobar {
   /* 垂直居中 */
   justify-content: center;
