@@ -78,10 +78,11 @@
 <script>
 const modal = weex.requireModule("modal");
 const stream = weex.requireModule("stream");
+
 export default {
   data() {
     return {
-      lists: []
+      lists: [],
     };
   },
   created() {
@@ -96,6 +97,7 @@ export default {
     getNews(url, callback) {
       return stream.fetch(
         {
+        
           method: "GET",
           type: "json",
           Url: url

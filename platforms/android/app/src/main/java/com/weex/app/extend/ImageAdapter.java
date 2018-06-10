@@ -36,8 +36,7 @@ public class ImageAdapter implements IWXImgLoaderAdapter {
   }
 
   @Override
-  public void setImage(final String url, final ImageView view,
-                       WXImageQuality quality, final WXImageStrategy strategy) {
+  public void setImage(final String url, final ImageView view, WXImageQuality quality, final WXImageStrategy strategy) {
 
     WXSDKManager.getInstance().postOnUiThread(new Runnable() {
 

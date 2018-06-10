@@ -17,9 +17,7 @@ public class WXApplication extends Application {
     super.onCreate();
     WXSDKEngine.addCustomOptions("appName", "WXSample");
     WXSDKEngine.addCustomOptions("appGroup", "WXApp");
-    WXSDKEngine.initialize(this,
-        new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build()
-    );
+    WXSDKEngine.initialize(this, new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build());
     try {
       WXSDKEngine.registerModule("event", WXEventModule.class);
     } catch (WXException e) {

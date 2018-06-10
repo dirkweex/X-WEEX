@@ -110,7 +110,9 @@ export default {
       console.log("will jupm");
       navigator.push(
         {
-          url: "http://192.168.0.101:8081/Register.html",
+          // url: "http://192.168.0.101:8083/Register.html",
+          // url:"./platforms/android/app/src/main/assets/dist/Register.js",
+          url:"file://assets/dist/Register.js",
           animated: "true"
         },
         event => {
