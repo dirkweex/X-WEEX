@@ -17,12 +17,23 @@
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="ep-warpper">
                 <text>电站位置</text>
-                <input class="input" v-model="name" type="text" @change="changeDeviceID" placeholder="地图选点、自动定位" autofocus="true" value="" />
+                <div class="location-warpper">
+                    <image class="location-image" src="/web/assets/img/adress.png" />
+                    <text>地图选点 </text>
+                    <image class="location-image" src="/web/assets/img/position.png" />
+                    <text>自动定位</text>
+                </div>
+
             </div>
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="ep-warpper">
                 <text></text>
-                <input class="input" v-model="name" type="text" @change="changeDeviceID" placeholder="纬度、经度" autofocus="true" value="" />
+                <div class="location-warpper">
+                    <text>纬度</text>
+                    <text>13.12144 </text>
+                    <text>经度</text>
+                    <text>113.38835</text>
+                </div>
             </div>
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="ep-warpper">
@@ -64,12 +75,12 @@
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="ep-warpper">
                 <text>朝向</text>
-                <input class="input" v-model="name" type="text" @change="changeDeviceID" placeholder="请输入设备ID" autofocus="true" value="" />
+                <wxc-slider-bar v-bind="sliderBarCfg"></wxc-slider-bar>
             </div>
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="ep-warpper">
                 <text>朝向</text>
-                <input class="input" v-model="name" type="text" @change="changeDeviceID" placeholder="请输入设备ID" autofocus="true" value="" />
+
             </div>
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="ep-warpper">
@@ -171,7 +182,22 @@
 </template>
 <script>
 const navigator = weex.requireModule("navigator");
+import { WxcSliderBar } from "weex-ui";
 export default {
+    components: {
+        data: () => ({
+            sliderBarCfg:{
+                length:400,
+                height:30,
+                range:false,
+                min:0,
+                max:360,
+                value:0,
+                defaultValue:0,
+                disabled:false
+            }
+        })
+    },
     data() {},
     methods: {
         leftback: function() {
@@ -240,7 +266,7 @@ export default {
 .button-warpper {
     /* justify-content: center;
     align-items: center; */
-    /* flex: 1; */
+    flex: 1;
 }
 .button {
     /* align-content: flex-end; */
@@ -271,5 +297,12 @@ export default {
     /* margin-bottom: 35px; */
     background-color: #ffffff;
     /* outline: none; */
+}
+.location-image {
+    width: 35px;
+    height: 35px;
+}
+.location-warpper {
+    flex-direction: row;
 }
 </style>

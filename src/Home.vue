@@ -5,7 +5,7 @@
       <div class="title">
         <text class="title-text">我的电站</text>
       </div>
-      <image class="toobar-rightimage" src="/web/assets/img/add.png" />
+      <image  class="toobar-rightimage" @click="add" src="/web/assets/img/add.png" />
     </div>
     <!-- 今日发电和今日总收益 -->
     <div class="all-data">
@@ -75,6 +75,7 @@
 <script>
 // const modal = weex.requireModule("modal");
 // const stream = weex.requireModule("stream");
+const navigator = weex.requireModule("navigator");
 
 export default {
     data() {
@@ -82,7 +83,22 @@ export default {
             lists: [11, 22, 1, 1, 214, 2, 4, 214, 1, 24, 12, 41, 24, 12, 41, 24]
         };
     },
-    methods: {}
+    methods: {
+        add:function() {
+              navigator.push({
+          // url: "http://192.168.0.101:8083/Register.html",
+          // url:"./platforms/android/app/src/main/assets/dist/Register.js",
+          url:"http://192.168.12.75:8081/NewBuild.html",
+          animated: "true"
+        },
+        event => {
+          modal.toast({
+            message: "callback:" + event
+          });
+        }
+      );
+        }
+    }
 };
 </script>
 <style scoped>
