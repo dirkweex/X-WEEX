@@ -82,7 +82,7 @@ export default {
         console.log("will jupm");
         navigator.push(
           {
-            url: "http://192.168.0.101:8081/BottomTab.html",
+            url: "http://192.168.12.75:8081/BottomTab.html",
             animated: "true"
           },
           event => {
