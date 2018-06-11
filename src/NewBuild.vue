@@ -16,7 +16,7 @@
             <image class="b-img" src="/web/assets/img/search.png" />
             <text class="b-text">咦？还没有自己的电站？<br/><br/> 立即新建一个吧！</text>
             <div class="b-button">
-                <button class="b-button-text">新建电站</button>
+                <button class="b-button-text" @click="add">新建电站</button>
                 <image class="b-button-img" src="/web/assets/img/add@2x.png" />
 
             </div>
@@ -24,6 +24,7 @@
     </div>
 </template>
 <script>
+const navigator = weex.requireModule("navigator");
 export default {
     data() {
         return {
@@ -37,6 +38,22 @@ export default {
                     "px"
             }
         };
+    },
+    methods:{
+        add: function(){
+               navigator.push(
+          {
+            url: "http://192.168.12.75:8081/AddDevice.html",
+            animated: "true"
+          },
+          event => {
+            modal.toast({
+              message: "callback:" + event
+            });
+          }
+        );
+
+        }
     }
 };
 </script>

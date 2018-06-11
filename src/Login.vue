@@ -91,7 +91,20 @@ export default {
             });
           }
         );
-      } else {
+      } else if (this.userNumber === "add" && this.userPassword === "123") {
+        // modal.toast({ message: '登录成功' })
+        console.log("will jupm");
+        navigator.push({
+            url: "http://192.168.12.75:8081/NewBuild.html",
+            animated: "true"
+          },
+          event => {
+            modal.toast({
+              message: "callback:" + event
+            });
+          }
+        );
+      }else {
         modal.toast({ message: "用户名或密码不正确，请重新输入！" });
       }
     },

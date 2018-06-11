@@ -82,7 +82,7 @@ const stream = weex.requireModule("stream");
 export default {
   data() {
     return {
-      lists: [],
+      lists: [11,22,1,1,214,2,4,214,1,24,12,41,24,12,41,24]
     };
   },
   created() {
