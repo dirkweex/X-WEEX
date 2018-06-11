@@ -162,7 +162,7 @@
             <div style="height:1px;background-color:#A5A5A5" />
 
             <div class="button-warpper">
-                <button class="button" @click="configDevice">保存</button>
+                <button class="button" @click="save">保存</button>
             </div>
         </div>
 
@@ -178,6 +178,19 @@ export default {
             navigator.push(
                 {
                     url: "http://192.168.12.75:8081/AddDevice.html",
+                    animated: "true"
+                },
+                event => {
+                    modal.toast({
+                        message: "callback:" + event
+                    });
+                }
+            );
+        },
+        save: function() {
+            navigator.push(
+                {
+                    url: "http://192.168.12.75:8081/BottomTab.html",
                     animated: "true"
                 },
                 event => {
