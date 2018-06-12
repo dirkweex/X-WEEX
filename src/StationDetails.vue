@@ -42,10 +42,10 @@
     </div>
 </template>
 <script>
-const dom = weex.requireModule("dom");
+// const dom = weex.requireModule("dom");
+// import { WxcTabPage, WxcPanItem, Utils, BindEnv } from "weex-ui";
+// import Config from "./stationconfig.js";
 
-import { WxcTabPage, WxcPanItem, Utils, BindEnv } from "weex-ui";
-import Config from "./stationconfig.js";
 import ItemStation from "./ItemStation.vue";
 import ItemOverview from "./ItemOverview.vue";
 import ItemDevice from "./ItemDevice.vue";
