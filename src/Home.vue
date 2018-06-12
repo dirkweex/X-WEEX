@@ -115,7 +115,7 @@ export default {
                     money: "99445"
                 },
                 {
-                    title: "zzzzz",
+                    title: "zzzzz电站",
                     wa: "100.3",
                     dianliang: "23",
                     xiaolv: "61",
@@ -140,7 +140,7 @@ export default {
                     wa: "297",
                     dianliang: "110",
                     xiaolv: "22",
-                    money: "445.022"
+                    money: "445.02"
                 }
             ]
         };
