@@ -61,11 +61,37 @@
         <!-- 分割线 -->
         <div style="height:20px;margin:30px;background-color:#EEEEEE"></div>
 
+        <!-- 电站列表 -->
         <div>
             <list>
-                <cell v-for="rum in lists" :key="rum">
-                    <div class="panel">
-                        <text class="text">{{rum}}</text>
+                <cell v-for="item in lists" :key="item">
+                    <div class="station-warpper">
+                        <!-- left -->
+                        <div class="a">
+                            <image class="station-img" src="/web/assets/img/pic_house_small.png" />
+                            <div class="aa">
+                                <text>{{item.title}}</text>
+                                <div class="b">
+                                    <text>功率</text>
+                                    <text>{{item.wa}}瓦</text>
+                                </div>
+                                <div class="b">
+                                    <text>发电量</text>
+                                    <text>{{item.dianliang}}瓦</text>
+                                </div>
+                                <div class="b">
+                                    <text>发电效率</text>
+                                    <text>{{item.xiaolv}}瓦</text>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- right -->
+                        <div class="ccc">
+                            <text class="right-text">￥{{item.money}}</text>
+                            <text>发电收益</text>
+
+                        </div>
                     </div>
                 </cell>
             </list>
@@ -80,7 +106,43 @@ const navigator = weex.requireModule("navigator");
 export default {
     data() {
         return {
-            lists: [11, 22, 1, 1, 214, 2, 4, 214, 1, 24, 12, 41, 24, 12, 41, 24]
+            lists: [
+                {
+                    title: "特斯电站",
+                    wa: "200.3",
+                    dianliang: "1500",
+                    xiaolv: "69",
+                    money: "99445"
+                },
+                {
+                    title: "zzzzz",
+                    wa: "100.3",
+                    dianliang: "23",
+                    xiaolv: "61",
+                    money: "1200"
+                },
+                {
+                    title: "xxx电站",
+                    wa: "10.3",
+                    dianliang: "30",
+                    xiaolv: "78",
+                    money: "200.30"
+                },
+                {
+                    title: "rrrr电站",
+                    wa: "211.3",
+                    dianliang: "900",
+                    xiaolv: "99",
+                    money: "1445"
+                },
+                {
+                    title: "AAA电站",
+                    wa: "297",
+                    dianliang: "110",
+                    xiaolv: "22",
+                    money: "445.022"
+                }
+            ]
         };
     },
     methods: {
@@ -103,6 +165,30 @@ export default {
 };
 </script>
 <style scoped>
+.ccc{
+    margin-top: 35px;
+    margin-right: 15px;
+}
+.right-text {
+    color: red;
+}
+.aa {
+    margin-left: 25px;
+}
+.b {
+    width: 250px;
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.a {
+    flex-direction: row;
+    margin: 35px;
+}
+.station-img {
+    width: 200px;
+    height: 200px;
+}
 .home-wrapper {
     background-color: #ffffff;
     flex: 1;
@@ -216,19 +302,9 @@ export default {
     width: 60px;
     height: 60px;
 }
-.panel {
-    width: 600px;
-    height: 250px;
-    margin-left: 50px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: center;
-    border-width: 2px;
-    border-style: solid;
-    border-color: rgb(162, 217, 192);
-    background-color: rgba(162, 217, 192, 0.2);
+.station-warpper {
+    flex-direction: row;
+    justify-content: space-between;
 }
 .text {
     font-size: 36px;
