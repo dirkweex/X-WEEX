@@ -1,76 +1,76 @@
 <template>
-  <div class="home-wrapper">
-    <!-- 我的电站 -->
-    <div class="toobar">
-      <div class="title">
-        <text class="title-text">我的电站</text>
-      </div>
-      <image  class="toobar-rightimage" @click="add" src="/web/assets/img/add.png" />
-    </div>
-    <!-- 今日发电和今日总收益 -->
-    <div class="all-data">
-      <div class="leftData">
-        <text class="du-color">今日发电总量</text>
-        <div class="du-warpper">
-          <text class="du-text">3712.37</text>
-          <text class="du-color">度</text>
+    <div class="home-wrapper">
+        <!-- 我的电站 -->
+        <div class="toobar">
+            <div class="title">
+                <text class="title-text">我的电站</text>
+            </div>
+            <image class="toobar-rightimage" @click="add" src="/web/assets/img/add.png" />
         </div>
-        <div class="du-warpper">
-          <text class="du-color">累计总发电</text>
-          <text class="du-color2">3712.37</text>
-          <text class="du-color">度</text>
+        <!-- 今日发电和今日总收益 -->
+        <div class="all-data">
+            <div class="leftData">
+                <text class="du-color">今日发电总量</text>
+                <div class="du-warpper">
+                    <text class="du-text">3712.37</text>
+                    <text class="du-color">度</text>
+                </div>
+                <div class="du-warpper">
+                    <text class="du-color">累计总发电</text>
+                    <text class="du-color2">3712.37</text>
+                    <text class="du-color">度</text>
+                </div>
+            </div>
+            <div style="width:1px;height:120px;margin:30px;background-color:#9F9F9F" />
+            <div class="rightData">
+                <text class="du-color">今日总收益</text>
+                <div class="du-warpper">
+                    <text class="du-text">2413.04</text>
+                    <text class="du-color"></text>
+                </div>
+                <div class="du-warpper">
+                    <text class="du-color">累计总收益</text>
+                    <text class="du-color2">2413.04</text>
+                    <text class="du-color"></text>
+                </div>
+            </div>
+
         </div>
-      </div>
-      <div style="width:1px;height:120px;margin:30px;background-color:#9F9F9F" />
-      <div class="rightData">
-        <text class="du-color">今日总收益</text>
-        <div class="du-warpper">
-          <text class="du-text">2413.04</text>
-          <text class="du-color"></text>
+
+        <!-- 分割线 -->
+        <div style="height:20px;margin:30px;background-color:#EEEEEE" />
+
+        <!-- 收益曲线图之3个按钮 -->
+        <div class="button-warpper">
+            <button class="button">功率</button>
+            <button class="button">发电量</button>
+            <button class="button">收益</button>
         </div>
-        <div class="du-warpper">
-          <text class="du-color">累计总收益</text>
-          <text class="du-color2">2413.04</text>
-          <text class="du-color"></text>
+
+        <!-- 收益曲线图之曲线图 -->
+
+        <!-- 收益曲线图之年月日 -->
+        <div class="button-warpper2">
+            <button class="button2">日</button>
+            <button class="button3">月</button>
+            <button class="button3">年</button>
+            <button class="button3">总</button>
+            <image class="year-img" src="/web/assets/img/calendar.png" />
         </div>
-      </div>
 
+        <!-- 分割线 -->
+        <div style="height:20px;margin:30px;background-color:#EEEEEE"></div>
+
+        <div>
+            <list>
+                <cell v-for="rum in lists" :key="rum">
+                    <div class="panel">
+                        <text class="text">{{rum}}</text>
+                    </div>
+                </cell>
+            </list>
+        </div>
     </div>
-
-    <!-- 分割线 -->
-    <div style="height:20px;margin:30px;background-color:#EEEEEE" />
-
-    <!-- 收益曲线图之3个按钮 -->
-    <div class="button-warpper">
-      <button class="button">功率</button>
-      <button class="button">发电量</button>
-      <button class="button">收益</button>
-    </div>
-
-    <!-- 收益曲线图之曲线图 -->
-
-    <!-- 收益曲线图之年月日 -->
-    <div class="button-warpper2">
-      <button class="button2">日</button>
-      <button class="button3">月</button>
-      <button class="button3">年</button>
-      <button class="button3">总</button>
-      <image class="year-img" src="/web/assets/img/calendar.png" />
-    </div>
-
-    <!-- 分割线 -->
-    <div style="height:20px;margin:30px;background-color:#EEEEEE"></div>
-
-    <div>
-      <list>
-        <cell v-for="rum in lists" :key="rum">
-          <div class="panel">
-            <text class="text">{{rum}}</text>
-          </div>
-        </cell>
-      </list>
-    </div>
-  </div>
 </template>
 <script>
 // const modal = weex.requireModule("modal");
@@ -84,19 +84,20 @@ export default {
         };
     },
     methods: {
-        add:function() {
-              navigator.push({
-          // url: "http://192.168.0.101:8083/Register.html",
-          // url:"./platforms/android/app/src/main/assets/dist/Register.js",
-          url:"http://192.168.12.75:8081/NewBuild.html",
-          animated: "true"
-        },
-        event => {
-          modal.toast({
-            message: "callback:" + event
-          });
-        }
-      );
+        add: function() {
+            navigator.push(
+                {
+                    // url: "http://192.168.0.101:8083/Register.html",
+                    // url:"./platforms/android/app/src/main/assets/dist/Register.js",
+                    url: "http://192.168.12.75:8081/NewBuild.html",
+                    animated: "true"
+                },
+                event => {
+                    modal.toast({
+                        message: "callback:" + event
+                    });
+                }
+            );
         }
     }
 };
@@ -222,7 +223,7 @@ export default {
     margin-top: 35px;
     margin-bottom: 35px;
     /* flex-direction: column; */
-justify-content: center;
+    justify-content: center;
     align-items: center;
     border-width: 2px;
     border-style: solid;

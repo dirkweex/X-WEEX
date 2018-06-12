@@ -29,9 +29,7 @@
                     <div v-for="(tab,i) in tabs" :key="i" class="tab" @click="activeTab=i">
                         <text class="title">{{tab.title}}</text>
                     </div>
-
                 </div>
-
                 <div class="tab-panels" :style="{left:activeTab* -750+'px'}">
                     <div class="panel" v-for="(panel,pi) in panels" :key="pi">
                         <!-- <text class="content">{{panel.content}}</text> -->
@@ -52,7 +50,7 @@ import ItemStation from "./ItemStation.vue";
 import ItemOverview from "./ItemOverview.vue";
 import ItemDevice from "./ItemDevice.vue";
 export default {
-    components: {ItemStation, ItemOverview, ItemDevice},
+    components: { ItemStation, ItemOverview, ItemDevice },
     data() {
         return {
             imageList: [
@@ -89,8 +87,8 @@ export default {
                 content: tab.title
             }));
         },
-        componentName(){
-            return this.tabs[this.activeTab].name
+        componentName() {
+            return this.tabs[this.activeTab].name;
         }
     }
 };
@@ -99,7 +97,8 @@ export default {
 <style scoped>
 .tabbar {
     flex-direction: row;
-    background-color:  #1e90ff;
+    justify-content: center;
+    background-color: #ffffff;
 }
 .tab {
     height: 120px;
@@ -111,15 +110,15 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #1e90ff;
+    background-color: #ffffff;
 }
 .icon {
     width: 45px;
     height: 45px;
 }
 .title {
-    font-size: 28px;
-    color: #ffffff;
+    font-size: 35px;
+    color: #1e90ff;
     margin-top: 10px;
 }
 .tab-panels {
@@ -131,14 +130,9 @@ export default {
     background-color: #f5f5f5;
     transition: left 0.2s ease-in-out;
 }
-.item-container {
-    widows: 750px;
-    background-color: #f2f3f4;
-}
+
 .panel {
     width: 750px;
-    justify-content: center;
-    align-items: center;
 }
 .content {
     font-size: 100px;
@@ -147,7 +141,6 @@ export default {
 .border-cell {
     background: #f2f3f4;
     width: 750px;
-
     align-items: center;
     justify-content: center;
     border-bottom-width: 1px;
