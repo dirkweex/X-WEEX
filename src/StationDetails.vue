@@ -23,60 +23,36 @@
 
             <!-- 顶部标签页 -->
             <div>
-                <wxc-tab-page ref="wxc-tab-page"  :tab-titles="tabTiles" :tab-styles="tabStyles" title-type="icon" :tab-page-height="tabPageHeight" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
-                    <list v-for="(v,index) in tabList" :key="index" class="item-container" :style="{height:(tabPageHeight-tabStyles.height)+'px'}">
-                        <cell v-for="(demo,key) in v" class="cell" :key="key">
-                            <wxc-pan-item :ext-id="'1-'+(v)+'-'+(key)"
-                                            @wxcPanItemPan="wxcPanItemPan"
-                                            >
-                                <div class="content">
-                                    <text>{{key}}</text>
-                                </div>
-                            </wxc-pan-item>
-                        </cell>
-                    </list>
-                </wxc-tab-page>
+                <div class="tabbar">
+                    <div class="tab active" :style="{left:activeTab*150+'px'}">
+                    </div>
+                    <div v-for="(tab,i) in tabs" :key="i" class="tab" @click="activeTab=i">
+                        <text class="title">{{tab.title}}</text>
+                    </div>
+
+                </div>
+
+                <div class="tab-panels" :style="{left:activeTab* -750+'px'}">
+                    <div class="panel" v-for="(panel,pi) in panels" :key="pi">
+                        <!-- <text class="content">{{panel.content}}</text> -->
+                        <div :is="componentName"></div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
- 
 </template>
 <script>
-const dom=weex.requireModule('dom');
-import {WxcTabPage,WxcPanItem,Utils,BindEnv} from 'weex-ui';
-// import Config from "./bottomtabconfig.js";
-import bottomtabconfig from './bottomtabconfig.js';
-export default {
-    components:{WxcTabPage,WxcPanItem},
-    data:()=>({
-        tabTitles:bottomtabconfig.tabTitles,
-        tabStyles:bottomtabconfig.tabStyles,
-        tabList:[],
-        demoList:[1,2,3,4],
-        tabPageHeight:1334
-    }),
-    created(){
-        this.tabPageHeight=Utils.env.getPageHeight();
-        this.tabList=[...Array(this.tabTitles.length).keys()].map(i=>[]);
-        Vue.set(this.tabList,0,this.demoList);
-    },
-    methods:{
-        wxcTabPageCurrentTabSelected(e){
-            const self =this;
-            const index =e.page;
-            if(!Utils.isNonEmptyArray(self.tabList[index])){
-                setTimeout(()=>{
-                    Vue.set(self.tabList,index,self.demoList);
-                },100);
-            }
+const dom = weex.requireModule("dom");
 
-        },
-        wxcPanItemPan(e){
-            if(BindEnv.supportsEBForAndroid()){
-                this.$refs['wxc-tab-page'].bindExp(e.element);
-            }
-        }
-    },
+import { WxcTabPage, WxcPanItem, Utils, BindEnv } from "weex-ui";
+import Config from "./stationconfig.js";
+import ItemStation from "./ItemStation.vue";
+import ItemOverview from "./ItemOverview.vue";
+import ItemDevice from "./ItemDevice.vue";
+export default {
+    components: {ItemStation, ItemOverview, ItemDevice},
     data() {
         return {
             imageList: [
@@ -89,21 +65,89 @@ export default {
                         "/platforms/android/app/src/main/res/drawable-hdpi/pic_house.png"
                 },
                 { src: "/web/assets/img/zlg_logo.png" }
+            ],
+            activeTab: 0,
+            tabs: [
+                {
+                    title: "电站",
+                    name: "ItemStation"
+                },
+                {
+                    title: "概览",
+                    name: "ItemOverview"
+                },
+                {
+                    title: "设备",
+                    name: "ItemDevice"
+                }
             ]
         };
+    },
+    computed: {
+        panels() {
+            return this.tabs.map(tab => ({
+                content: tab.title
+            }));
+        },
+        componentName(){
+            return this.tabs[this.activeTab].name
+        }
     }
 };
 </script>
  
 <style scoped>
+.tabbar {
+    flex-direction: row;
+    background-color:  #1e90ff;
+}
+.tab {
+    height: 120px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+}
+.active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1e90ff;
+}
+.icon {
+    width: 45px;
+    height: 45px;
+}
+.title {
+    font-size: 28px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+.tab-panels {
+    position: relative;
+    width: 3750;
+    flex: 1;
+    flex-direction: row;
+    align-items: stretch;
+    background-color: #f5f5f5;
+    transition: left 0.2s ease-in-out;
+}
 .item-container {
     widows: 750px;
     background-color: #f2f3f4;
 }
+.panel {
+    width: 750px;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    font-size: 100px;
+    color: #707070;
+}
 .border-cell {
     background: #f2f3f4;
     width: 750px;
-    height: 24px;
+
     align-items: center;
     justify-content: center;
     border-bottom-width: 1px;
@@ -150,7 +194,7 @@ export default {
     padding: 20px;
     /* height: 300px;  */
     item-color: gteen;
-    item-selected-color: red;
+    item-selected-color: #1e90ff;
     item-size: 20px;
     /* position: absolute; */
     /* top: 200px;
