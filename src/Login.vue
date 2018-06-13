@@ -84,7 +84,8 @@ export default {
         console.log("will jupm");
         navigator.push(
           {
-            url: "http://192.168.12.75:8081/BottomTab.html",
+            // url: "http://192.168.0.100:8081/BottomTab.html",
+             url:"file://assets/dist/BottomTab.js",
             animated: "true"
           },
           event => {
@@ -97,7 +98,8 @@ export default {
         // modal.toast({ message: '登录成功' })
         console.log("will jupm");
         navigator.push({
-            url: "http://192.168.12.75:8081/NewBuild.html",
+            // url: "http://192.168.0.100:8081/NewBuild.html",
+              url:"file://assets/dist/NewBuild.js",
             animated: "true"
           },
           event => {

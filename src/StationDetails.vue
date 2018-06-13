@@ -122,11 +122,11 @@ export default {
     margin-top: 10px;
 }
 .tab-panels {
-    position: relative;
+    /* position: relative; */
     width: 3750;
     flex: 1;
     flex-direction: row;
-    align-items: stretch;
+    /* align-items: stretch; */
     background-color: #f5f5f5;
     transition: left 0.2s ease-in-out;
 }
@@ -139,7 +139,7 @@ export default {
     color: #707070;
 }
 .border-cell {
-    background: #f2f3f4;
+    background-color: #f2f3f4;
     width: 750px;
     align-items: center;
     justify-content: center;
@@ -151,7 +151,7 @@ export default {
     border-color: #ffffff;
 }
 .content {
-    widows: 750px;
+    width:  750px;
     height: 300px;
     border-bottom-width: 1px;
     align-items: center;
@@ -181,7 +181,7 @@ export default {
     background-color: rgba((0), 0, 0, 0);
 }
 .frame {
-    position: relative;
+    /* position: relative; */
 }
 .indicator {
     padding: 20px;
