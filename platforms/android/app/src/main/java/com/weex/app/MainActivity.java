@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
      * 开始执行渲染
      */
     private void startRender() {
-        mWXSDKInstance.render("Main", WXFileUtils.loadAsset("Login.js", this),
+        mWXSDKInstance.render("Main", WXFileUtils.loadAsset("BottomTab.js", this),
                 null, null, WXRenderStrategy.APPEND_ASYNC);
     }
 
