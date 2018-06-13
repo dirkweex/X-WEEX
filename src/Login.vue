@@ -1,15 +1,15 @@
 <template>
   <div class="login-bg">
-    <image :style="imageStyle" src="/web/assets/img/login_bg.png" />
+    <image :style="imageStyle" :src="getUrl('login_bg.png')" />
     <div class="login-warpper">
-      <image class="logo" src="/web/assets/img/logo_login.png" />
+      <image class="logo" src="local:///logo_login" />
       <text class="title-text">登录</text>
-      <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="true" value="" />
+      <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="false" value="" />
       <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
       <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" value="" />
       <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
       <div class="remember-warpper">
-        <image class="remember-img" @click="remember" src="/web/assets/img/select1_select.png" />
+        <image class="remember-img" @click="remember" src="local:///select1_select" />
         <text class="remember-text">记住我</text>
         <text class="forget-text" @click="forget">忘记密码？</text>
       </div>
@@ -21,9 +21,9 @@
         <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
       </div>
       <div class="chat-warpper">
-        <image class="chat-img" @click="wechat" src="/web/assets/img/wechat.png" />
-        <image class="chat-img" @click="qq" src="/web/assets/img/qq.png" />
-        <image class="chat-img" @click="weibo" src="/web/assets/img/weibo.png" />
+        <image class="chat-img" @click="wechat" src="local:///wechat" />
+        <image class="chat-img" @click="qq" src="local:///qq" />
+        <image class="chat-img" @click="weibo" src="local:///weibo" />
       </div>
     </div>
     <!-- <div class="input-wrapper">
@@ -35,6 +35,7 @@
 <script>
 const modal = weex.requireModule("modal");
 const navigator = weex.requireModule("navigator");
+import mixin from "./mixins/mixin.js"
 export default {
   data() {
     return {
@@ -49,6 +50,7 @@ export default {
       }
     };
   },
+  mixins: [mixin],
   methods: {
     changeUserNumber: function(event) {
       this.userNumber = event.value;
@@ -160,7 +162,7 @@ export default {
 .login-warpper {
   justify-content: center;
   align-items: center;
-  margin-top: 180px;
+  margin-top: 100px;
 }
 .logo {
   width: 160px;
@@ -189,13 +191,13 @@ export default {
 }
 .input {
   font-size: 35px;
-  height: 80px;
+
   width: 550px;
   padding-left: 50px;
   color: #000000;
   placeholder-color: #a4d3fc;
   padding-top: 50px;
-  margin-bottom: 35px;
+
   background-color: rgba(0, 0, 0, 0);
   /* outline: none; */
 }
@@ -242,7 +244,7 @@ export default {
   margin-top: 15px;
 }
 .chat-img {
-  margin: 30px;
+
   width: 60px;
   height: 60px;
 }
