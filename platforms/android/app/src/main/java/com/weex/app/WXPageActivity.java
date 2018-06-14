@@ -2,7 +2,9 @@ package com.weex.app;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
@@ -63,6 +65,12 @@ public class WXPageActivity extends AbsWeexActivity implements
       uri = Uri.parse("{}");
     }
     if (uri != null) {
+      //Android 5.0 6.0不会出现问题，但是
+      //Android 7.0以上，使用file:///会失败，通过这个判断去掉限制。
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+      }
       try {
         JSONObject initData = new JSONObject(uri.toString());
         String bundleUrl = initData.optString("WeexBundle", null);
