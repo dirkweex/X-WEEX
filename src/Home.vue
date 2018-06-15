@@ -8,7 +8,13 @@
             <image class="toobar-left" style="width:35px;height:35px;margin-right:35px"  @click="add"  :src="getUrl('add.png')"/>
         </div>
 
-        <!-- 今日发电和今日总收益 -->
+
+
+        <!-- 电站列表 -->
+        <div>
+            <list>
+              <cell>
+                      <!-- 今日发电和今日总收益 -->
         <div class="all-data">
             <div class="leftData">
                 <text class="du-color">今日发电总量</text>
@@ -56,20 +62,18 @@
             <button class="button3">月</button>
             <button class="button3">年</button>
             <button class="button3">总</button>
-            <image class="year-img" src="/web/assets/img/calendar.png" />
+            <image class="year-img"  :src="getUrl('calendar.png')" />
         </div>
 
         <!-- 分割线 -->
         <div style="height:20px;margin:30px;background-color:#EEEEEE"></div>
 
-        <!-- 电站列表 -->
-        <div>
-            <list>
+              </cell>
                 <cell v-for="item in lists" :key="item">
                     <div class="station-warpper">
                         <!-- left -->
                         <div class="a">
-                            <image class="station-img" src="/web/assets/img/pic_house_small.png" />
+                            <image class="station-img" :src="getUrl('pic_house_small.png')"/>
                             <div class="aa">
                                 <text>{{item.title}}</text>
                                 <div class="b">
@@ -153,8 +157,8 @@ export default {
         {
           // url: "http://192.168.0.101:8083/Register.html",
           // url:"./platforms/android/app/src/main/assets/dist/Register.js",
-        //   url: "http://192.168.12.75:8081/NewBuild.html",
-           url: this.toVue('NewBuild'),
+          //   url: "http://192.168.12.75:8081/NewBuild.html",
+          url: this.toVue("NewBuild"),
           animated: "true"
         },
         event => {
@@ -173,7 +177,7 @@ export default {
   margin-right: 15px;
 }
 .right-text {
-  color: red;
+  color: #ff0000;
 }
 .aa {
   margin-left: 25px;

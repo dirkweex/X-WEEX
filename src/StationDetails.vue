@@ -180,13 +180,11 @@ export default {
     line-height: 60px;
     background-color: rgba((0), 0, 0, 0);
 }
-.frame {
-    /* position: relative; */
-}
+
 .indicator {
     padding: 20px;
     /* height: 300px;  */
-    item-color: gteen;
+    item-color: green;
     item-selected-color: #1e90ff;
     item-size: 20px;
     /* position: absolute; */
