@@ -90,7 +90,9 @@ export default {
                 navigator.push(
                     {
                         // url: "http://192.168.0.100:8081/BottomTab.html",
-                        url: "file://assets/dist/BottomTab.js",
+                        // url: "file://assets/dist/BottomTab.js",
+                              url: this.toVue('BottomTab'),
+                        
                         animated: "true"
                     },
                     event => {
@@ -108,7 +110,8 @@ export default {
                 navigator.push(
                     {
                         // url: "http://192.168.0.100:8081/NewBuild.html",
-                        url: "file://assets/dist/NewBuild.js",
+                        // url: "file://assets/dist/NewBuild.js",
+                              url: this.toVue('NewBuild'),
                         animated: "true"
                     },
                     event => {
