@@ -1,13 +1,14 @@
 <template>
     <div class="wrapper">
         <div class="register">
-            <div class="toolbar-warpper">
-                <!-- <div class="title"> -->
-                <text class="toolbar-text">注册</text>
-                <!-- </div> -->
-            </div>
-            <div class="toolbar-leftimage-warpper">
-                <image class="toolbar-leftimage" @click="leftback" :src="getUrl('arrow_left.png')" />
+            <div>
+                <div class="toolbar-warpper">
+                    <!-- <div class="title"> -->
+                    <text class="toolbar-text">注册</text>
+                </div>
+                <div class="toolbar-leftimage-warpper">
+                    <image class="toolbar-leftimage" @click="leftback" :src="getUrl('arrow_left.png')" />
+                </div>
             </div>
             <input v-model="userName" type="text" class="input" @change="changeUserName" placeholder="用户名(英文、数字和_)" autofocus="false" value="" />
             <div style="height:1px;background-color:#A5A5A5" />
@@ -25,7 +26,7 @@
             </div>
             <div style="height:1px;background-color:#A5A5A5" />
             <div class="agree-warpper">
-                <image class="agree-img" @click="agree" src="/web/assets/img/select2_normal.png" />
+                <image class="agree-img" @click="agree" :src="getUrl('select2_normal.png')" />
                 <text class="agree-text">同意注册条款</text>
             </div>
             <text class="button" @click="register">注册</text>
@@ -35,10 +36,10 @@
 <script>
 const modal = weex.requireModule("modal");
 const navigator = weex.requireModule("navigator");
-import mixins from './mixins/mixin.js'
-import mixin from './mixins/mixin.js';
+
+import mixin from "./mixins/mixin.js";
 export default {
-    mixins:[mixin],
+    mixins: [mixin],
     methods: {
         // 返回登录界面
         leftback: function(event) {
@@ -81,80 +82,84 @@ export default {
 </script>
 <style scoped >
 .warpper {
-  /* background-image: linear-gradient(to bottom, #f35bb6, #7b79f9); */
-  background-color: #ffffff;
-  flex: 1;
+    /* background-image: linear-gradient(to bottom, #f35bb6, #7b79f9); */
+    background-color: #ffffff;
+    flex: 1;
 }
 .toolbar-warpper {
-  /* position: absolute; */
-  /* 垂直居中 */
-  justify-content: center;
-  align-items: center;
-  background-color: #1e90ff;
-  height: 100px;
-  /* width: 100px; */
+    /* position: absolute; */
+    /* 垂直居中 */
+    justify-content: center;
+    align-items: center;
+    background-color: #309bf8;
+    height: 100px;
+    /* width: 100px; */
 }
 .toolbar-leftimage-warpper {
-  position: absolute;
-  /* 垂直居中 */
-  justify-content: center;
-  /* align-items: center; */
-  height: 100px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /* 垂直居中 */
+    justify-content: center;
+    /* align-items: center; */
+    height: 100px;
 }
 .toolbar-text {
-  font-size: 35px;
-  color: #ffffff;
+    font-size: 35px;
+    color: #ffffff;
 }
 .toolbar-leftimage {
-  margin-left: 35px;
-  width: 35px;
-  height: 35px;
+    margin-left: 35px;
+    width: 35px;
+    height: 35px;
 }
 .input {
-  font-size: 35px;
-  height: 80px;
-  width: 550px;
-  padding-left: 60px;
-  color: #ffffff;
-  padding-top: 35px;
-  placeholder-color: #a5a5a5;
-  margin-bottom: 35px;
-  background-color: rgba(0, 0, 0, 0);
-  /* outline: none; */
+    font-size: 35px;
+    height: 80px;
+    width: 550px;
+    padding-left: 60px;
+    color: #ffffff;
+    padding-top: 35px;
+    placeholder-color: #a5a5a5;
+    margin-bottom: 35px;
+    background-color: rgba(0, 0, 0, 0);
+    /* outline: none; */
 }
 .button {
-  font-size: 45px;
-  text-align: center;
-  padding: 15px;
-  margin: 10px;
-  border-width: 2px;
-  border-style: solid;
-  color: #ffffff;
-  border-color: #ffffff;
-  background-color: #1e90ff;
-  border-radius: 10px;
-  margin-top: 40px;
+    font-size: 45px;
+    text-align: center;
+    padding: 15px;
+    margin: 10px;
+    border-width: 2px;
+    border-style: solid;
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #1e90ff;
+    border-radius: 10px;
+    margin-top: 40px;
 }
 .code-warpper {
-  flex-direction: row;
-  align-items: center;
+    flex-direction: row;
+    align-items: center;
 }
 .agree-warpper {
-  margin-top: 40px;
-  margin-left: 50px;
-  flex-direction: row;
-  /* align-items: center; */
+    margin-top: 40px;
+    margin-left: 50px;
+    flex-direction: row;
+    /* align-items: center; */
 }
 .code-text {
-  color: #509bd7;
+    color: #509bd7;
+    font-size: 35px;
 }
 .agree-img {
-  margin-top: 3px;
-  width: 35px;
-  height: 35px;
+    margin-top: 3px;
+    width: 35px;
+    height: 35px;
 }
 .agree-text {
-  color: #509bd7;
-  margin-left: 30px;
+    color: #509bd7;
+    font-size: 35px;
+    margin-left: 30px;
 }
 </style>

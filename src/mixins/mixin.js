@@ -15,5 +15,14 @@ export default {
             // modal.toast({ message: name, duration: 5 })
             return platforms[platform] + name
         }
+        // toVue(url){
+        //     let platform =WXEnvironment.platform.toLowerCase();
+        //     let platform = {
+        //         // url: "http://192.168.0.100:8081/BottomTab.html",
+        //         // url: "file://assets/dist/BottomTab.js",
+        //         web:""
+        //     }
+        // }
+        
     }
 }
