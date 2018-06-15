@@ -17,7 +17,7 @@ export default {
         },
         toVue(vueName) {
             let platform = WXEnvironment.platform.toLowerCase();
-            let ip = "192.168.13.12:8081";
+            let ip = "192.168.0.100:8081";
             let platforms = {
                 // url: "http://192.168.0.100:8081/BottomTab.html",
                 // url: "file://assets/dist/BottomTab.js",

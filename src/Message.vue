@@ -115,11 +115,11 @@ export default {
     margin-top: 10px;
 }
 .tab-panels {
-    position: relative;
+    /* position: relative; */
     width: 3750px;
     flex: 1;
     flex-direction: row;
-    align-items: stretch;
+    /* align-items: stretch; */
     background-color: #f5f5f5;
     transition: left 0.2s ease-in-out;
 }

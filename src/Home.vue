@@ -1,12 +1,13 @@
 <template>
     <div class="home-wrapper">
-        <!-- 我的电站 -->
-        <div class="toobar">
-            <div class="title">
-                <text class="title-text">我的电站</text>
-            </div>
-            <image class="toobar-rightimage" @click="add" src="/web/assets/img/add.png" />
+
+        <!-- 标题栏——我的电站 , 待封装。 -->
+        <div class="toobar" style="justify-content:space-between;align-items:center;flex-direction:row;background-color:#309bf8;height:100px;">
+            <image class="toobar-left" style="width:35px;height:35px;margin-left:35px"  @click="back" />
+            <text class="title-text" style=" font-size:45px;color: #ffffff">我的电站</text>
+            <image class="toobar-left" style="width:35px;height:35px;margin-right:35px"  @click="add"  :src="getUrl('add.png')"/>
         </div>
+
         <!-- 今日发电和今日总收益 -->
         <div class="all-data">
             <div class="leftData">
@@ -102,213 +103,195 @@
 // const modal = weex.requireModule("modal");
 // const stream = weex.requireModule("stream");
 const navigator = weex.requireModule("navigator");
-
+import mixin from "./mixins/mixin.js";
 export default {
-    data() {
-        return {
-            lists: [
-                {
-                    title: "特斯电站",
-                    wa: "200.3",
-                    dianliang: "1500",
-                    xiaolv: "69",
-                    money: "99445"
-                },
-                {
-                    title: "zzzzz电站",
-                    wa: "100.3",
-                    dianliang: "23",
-                    xiaolv: "61",
-                    money: "1200"
-                },
-                {
-                    title: "xxx电站",
-                    wa: "10.3",
-                    dianliang: "30",
-                    xiaolv: "78",
-                    money: "200.30"
-                },
-                {
-                    title: "rrrr电站",
-                    wa: "211.3",
-                    dianliang: "900",
-                    xiaolv: "99",
-                    money: "1445"
-                },
-                {
-                    title: "AAA电站",
-                    wa: "297",
-                    dianliang: "110",
-                    xiaolv: "22",
-                    money: "445.02"
-                }
-            ]
-        };
-    },
-    methods: {
-        add: function() {
-            navigator.push(
-                {
-                    // url: "http://192.168.0.101:8083/Register.html",
-                    // url:"./platforms/android/app/src/main/assets/dist/Register.js",
-                    url: "http://192.168.12.75:8081/NewBuild.html",
-                    animated: "true"
-                },
-                event => {
-                    modal.toast({
-                        message: "callback:" + event
-                    });
-                }
-            );
+  mixins: [mixin],
+  data() {
+    return {
+      lists: [
+        {
+          title: "特斯电站",
+          wa: "200.3",
+          dianliang: "1500",
+          xiaolv: "69",
+          money: "99445"
+        },
+        {
+          title: "zzzzz电站",
+          wa: "100.3",
+          dianliang: "23",
+          xiaolv: "61",
+          money: "1200"
+        },
+        {
+          title: "xxx电站",
+          wa: "10.3",
+          dianliang: "30",
+          xiaolv: "78",
+          money: "200.30"
+        },
+        {
+          title: "rrrr电站",
+          wa: "211.3",
+          dianliang: "900",
+          xiaolv: "99",
+          money: "1445"
+        },
+        {
+          title: "AAA电站",
+          wa: "297",
+          dianliang: "110",
+          xiaolv: "22",
+          money: "445.02"
         }
+      ]
+    };
+  },
+  methods: {
+    add: function() {
+      navigator.push(
+        {
+          // url: "http://192.168.0.101:8083/Register.html",
+          // url:"./platforms/android/app/src/main/assets/dist/Register.js",
+        //   url: "http://192.168.12.75:8081/NewBuild.html",
+           url: this.toVue('NewBuild'),
+          animated: "true"
+        },
+        event => {
+          modal.toast({
+            message: "callback:" + event
+          });
+        }
+      );
     }
+  }
 };
 </script>
 <style scoped>
-.ccc{
-    margin-top: 35px;
-    margin-right: 15px;
+.ccc {
+  margin-top: 35px;
+  margin-right: 15px;
 }
 .right-text {
-    color: red;
+  color: red;
 }
 .aa {
-    margin-left: 25px;
+  margin-left: 25px;
 }
 .b {
-    width: 250px;
-    margin-top: 10px;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 250px;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .a {
-    flex-direction: row;
-    margin: 35px;
+  flex-direction: row;
+  margin: 35px;
 }
 .station-img {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 .home-wrapper {
-    background-color: #ffffff;
-    flex: 1;
+  background-color: #ffffff;
+  flex: 1;
 }
 
-.toobar {
-    /* 垂直居中 */
-    justify-content: center;
-    align-items: center;
-    background-color: #1e90ff;
-    height: 100px;
-}
 .title {
-    /* 水平居中 */
-    align-items: center;
+  /* 水平居中 */
+  align-items: center;
 }
-.title-text {
-    font-size: 45px;
-    color: #ffffff;
-}
-
-.toobar-rightimage {
-    /* 类似帧布局的效果，叠加于上 */
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    margin-left: 300px;
-}
-
 .all-data {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 .rightData {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 .du-warpper {
-    flex-direction: row;
+  flex-direction: row;
 }
 .du-text {
-    font-size: 50px;
-    color: #1e90ff;
-    margin-right: 10px;
+  font-size: 50px;
+  color: #1e90ff;
+  margin-right: 10px;
 }
 .du-color {
-    font-size: 25px;
-    color: #9f9f9f;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  font-size: 25px;
+  color: #9f9f9f;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .du-color2 {
-    color: #555555;
-    font-size: 30px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 8px;
+  color: #555555;
+  font-size: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 8px;
 }
 .button-warpper {
-    /* margin-top: 10px; */
-    flex-direction: row;
-    justify-content: space-around;
+  /* margin-top: 10px; */
+  flex-direction: row;
+  justify-content: space-around;
 }
 .button-warpper2 {
-    flex-direction: row;
-    /* justify-content: space-around; */
-    margin-top: 30px;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  margin-top: 30px;
 }
 .button {
-    font-size: 30px;
-    width: 200px;
-    text-align: center;
-    padding: 15px;
-    border-width: 2px;
-    border-style: solid;
-    color: #ffffff;
-    border-color: #ffffff;
-    background-color: #3fa2f9;
-    border-radius: 50px;
+  font-size: 30px;
+  width: 200px;
+  text-align: center;
+  padding: 15px;
+  border-width: 2px;
+  border-style: solid;
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #3fa2f9;
+  border-radius: 50px;
 }
 .button2 {
-    margin-left: 30px;
-    font-size: 30px;
-    width: 90px;
-    height: 90px;
-    text-align: center;
-    border-width: 2px;
-    border-style: solid;
-    color: #ffffff;
-    border-color: #ffffff;
-    background-color: #31d7fe;
-    border-radius: 100px;
+  margin-left: 30px;
+  font-size: 30px;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #31d7fe;
+  border-radius: 100px;
 }
 .button3 {
-    margin-left: 60px;
-    font-size: 30px;
-    width: 90px;
-    height: 90px;
-    text-align: center;
-    border-width: 2px;
-    border-style: solid;
-    color: #ffffff;
-    border-color: #ffffff;
-    background-color: #31d7fe;
-    border-radius: 100px;
+  margin-left: 60px;
+  font-size: 30px;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #31d7fe;
+  border-radius: 100px;
 }
 .year-img {
-    margin-top: 15px;
-    margin-left: 60px;
-    width: 60px;
-    height: 60px;
+  margin-top: 15px;
+  margin-left: 60px;
+  width: 60px;
+  height: 60px;
 }
 .station-warpper {
-    flex-direction: row;
-    justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .text {
-    font-size: 36px;
-    text-align: center;
-    color: #41b883;
+  font-size: 36px;
+  text-align: center;
+  color: #41b883;
 }
 </style>

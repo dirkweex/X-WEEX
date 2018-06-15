@@ -47,7 +47,7 @@ export default {
 .panel {
     margin: 15px;
     border-width: 2px;
-    border-color: red;
+    border-color: #FF0000;
     padding: 15px;
 }
 </style>

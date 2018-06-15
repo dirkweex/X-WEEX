@@ -52,7 +52,7 @@
 }
 .setting-text {
     justify-content: center;
-    background: #ffffff;
+    background-color: #ffffff;
     margin-top: 2px;
     margin-bottom: 2px;
 }
