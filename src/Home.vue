@@ -11,8 +11,9 @@
         <div>
             <list class="list-warpper">
                 <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
-      <text class="indicator-text">Refreshing ...</text>
-      <loading-indicator class="indicator"></loading-indicator>
+          <loading-indicator class="indicator"></loading-indicator>
+      <text class="indicator-text">正在刷新...</text>
+ 
     </refresh>
               <cell>
          <!-- 今日发电和今日总收益 -->
@@ -50,19 +51,21 @@
 
         <!-- 收益曲线图之3个按钮 -->
         <div class="button-warpper">
-            <button class="button">功率</button>
-            <button class="button">发电量</button>
-            <button class="button">收益</button>
+            <wxc-button text="功率"  type="blue"  size="medium" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+            <wxc-button text="发电量" type="blue"  size="medium" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+            <wxc-button text="收益"  type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
         </div>
 
         <!-- 收益曲线图之曲线图 -->
 
         <!-- 收益曲线图之年月日 -->
         <div class="button-warpper2">
-            <button class="button2">日</button>
-            <button class="button3">月</button>
-            <button class="button3">年</button>
-            <button class="button3">总</button>
+      
+            <wxc-button  text="日"  class="button2"  size="small" backgroundColor="#309bf8" borderRadius="90px"  @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+            <wxc-button text="月" class="button3" size="small" backgroundcolor="#309bf8"  borderRadius="90px"    @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+            <wxc-button  text="年"   class="button3" size="small" backgroundcolor="#309bf8"  borderRadius="90px"  @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+            <wxc-button   text="总" class="button3" size="small" backgroundcolor="#309bf8"  borderRadius="90px"  @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+        
             <image class="year-img"  :src="getUrl('calendar.png')" />
         </div>
 
@@ -101,7 +104,7 @@
                     </div>
                 </cell>
                     <loading class="loading" @loading="onloading" :display="loadinging ? 'show' : 'hide'">
-      <text class="indicator-text">Loading ...</text>
+      <text class="indicator-text">加载中 ...</text>
       <loading-indicator class="indicator"></loading-indicator>
     </loading>
             </list>
@@ -113,7 +116,9 @@ const modal = weex.requireModule("modal");
 // const stream = weex.requireModule("stream");
 const navigator = weex.requireModule("navigator");
 import mixin from "./mixins/mixin.js";
+import { WxcButton } from "weex-ui";
 export default {
+  components: { WxcButton },
   mixins: [mixin],
   data() {
     return {
@@ -154,6 +159,41 @@ export default {
           dianliang: "110",
           xiaolv: "22",
           money: "445.02"
+        },
+        {
+          title: "AAA电站",
+          wa: "297",
+          dianliang: "110",
+          xiaolv: "22",
+          money: "445.02"
+        },
+        {
+          title: "AAA电站",
+          wa: "297",
+          dianliang: "110",
+          xiaolv: "22",
+          money: "445.02"
+        },
+        {
+          title: "AAA电站",
+          wa: "297",
+          dianliang: "110",
+          xiaolv: "22",
+          money: "445.02"
+        },
+        {
+          title: "AAA电站",
+          wa: "297",
+          dianliang: "110",
+          xiaolv: "22",
+          money: "445.02"
+        },
+        {
+          title: "AAA电站",
+          wa: "297",
+          dianliang: "110",
+          xiaolv: "22",
+          money: "445.02"
         }
       ]
     };
@@ -164,9 +204,9 @@ export default {
       //   message: "这是itemClick",
       //   duration: 2
       // });
-       navigator.push(
+      navigator.push(
         {
-          url: this.toVue("AddDevice"),
+          url: this.toVue("StationDetails"),
           animated: "true"
         },
         event => {
@@ -193,7 +233,7 @@ export default {
       );
     },
     onrefresh(event) {
-      modal.toast({ message: "Refreshing", duration: 1 });
+      modal.toast({ message: "正在刷新...", duration: 1 });
       this.refreshing = true;
       setTimeout(() => {
         this.refreshing = false;
@@ -232,14 +272,15 @@ export default {
 }
 .indicator-text {
   color: #888888;
-  font-size: 42px;
+  font-size: 35px;
   text-align: center;
 }
 .indicator {
   margin-top: 16px;
-  height: 40px;
-  width: 40px;
-  color: blue;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 16px;
+  color: #309bf8;
 }
 .item-text {
   font-size: 35px;
@@ -312,6 +353,8 @@ export default {
   /* margin-top: 10px; */
   flex-direction: row;
   justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 .button-warpper2 {
   flex-direction: row;
@@ -332,29 +375,15 @@ export default {
 }
 .button2 {
   margin-left: 30px;
-  font-size: 30px;
   width: 90px;
   height: 90px;
   text-align: center;
-  border-width: 2px;
-  border-style: solid;
-  color: #ffffff;
-  border-color: #ffffff;
-  background-color: #31d7fe;
-  border-radius: 100px;
 }
 .button3 {
   margin-left: 60px;
-  font-size: 30px;
   width: 90px;
   height: 90px;
   text-align: center;
-  border-width: 2px;
-  border-style: solid;
-  color: #ffffff;
-  border-color: #ffffff;
-  background-color: #31d7fe;
-  border-radius: 100px;
 }
 .year-img {
   margin-top: 15px;

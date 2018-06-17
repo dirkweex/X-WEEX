@@ -37,10 +37,11 @@ export default {
     activeTitleColor: '#3D3D3D',
     activeBgColor: '#FFFFFF',
     isActiveTitleBold: true,
-    iconWidth: 70,
-    iconHeight: 70,
-    width: 160,
-    height: 120,
+    iconWidth: 50,
+    iconHeight: 50,
+    // width: 160,
+    // height: 120,
+
     fontSize: 24,
     textPaddingLeft: 10,
     textPaddingRight: 10

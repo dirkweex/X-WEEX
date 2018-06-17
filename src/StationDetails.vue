@@ -3,9 +3,9 @@
         <div class="Station-warpper">
             <!-- 标题栏 -->
             <div class="toolbar-warpper">
-                <image class="toolbar-image" @click="leftback" src="/web/assets/img/arrow_left.png" />
+                <image class="toolbar-image" @click="leftback"  :src="getUrl('arrow_left.png')" />
                 <text class="toolbar-text">电站详情</text>
-                <image class="toolbar-image" @click="rightback" src="/web/assets/img/add.png" />
+                <image class="toolbar-image" @click="rightback"   :src="getUrl('add.png')" />
             </div>
             <!-- 轮播图 -->
             <div>
@@ -49,169 +49,191 @@
 import ItemStation from "./ItemStation.vue";
 import ItemOverview from "./ItemOverview.vue";
 import ItemDevice from "./ItemDevice.vue";
+import mixin from "./mixins/mixin.js";
 export default {
-    components: { ItemStation, ItemOverview, ItemDevice },
-    data() {
-        return {
-            imageList: [
-                {
-                    src:
-                        "/platforms/android/app/src/main/res/drawable-hdpi/penguins.jpg"
-                },
-                {
-                    src:
-                        "/platforms/android/app/src/main/res/drawable-hdpi/pic_house.png"
-                },
-                { src: "/web/assets/img/zlg_logo.png" }
-            ],
-            activeTab: 0,
-            tabs: [
-                {
-                    title: "电站",
-                    name: "ItemStation"
-                },
-                {
-                    title: "概览",
-                    name: "ItemOverview"
-                },
-                {
-                    title: "设备",
-                    name: "ItemDevice"
-                }
-            ]
-        };
-    },
-    computed: {
-        panels() {
-            return this.tabs.map(tab => ({
-                content: tab.title
-            }));
+  mixins: [mixin],
+  components: { ItemStation, ItemOverview, ItemDevice },
+  data() {
+    return {
+      imageList: [
+        {
+          src:
+            "https://img.zcool.cn/community/01481559841b3da801215603a36220.jpg@2o.jpg"
         },
-        componentName() {
-            return this.tabs[this.activeTab].name;
+        {
+          src:
+            "https://img.zcool.cn/community/017d3d59841b37a80121560387daea.jpg@2o.jpg"
+        },
+        {
+          src:
+            "https://img.zcool.cn/community/015cca59841b24a801215603ef250f.jpg@2o.jpg"
         }
+      ],
+      activeTab: 0,
+      tabs: [
+        {
+          title: "电站",
+          name: "ItemStation"
+        },
+        {
+          title: "概览",
+          name: "ItemOverview"
+        },
+        {
+          title: "设备",
+          name: "ItemDevice"
+        }
+      ]
+    };
+  },
+  computed: {
+    panels() {
+      return this.tabs.map(tab => ({
+        content: tab.title
+      }));
+    },
+    componentName() {
+      return this.tabs[this.activeTab].name;
     }
+  },
+  methods: {
+    leftback: function() {
+       navigator.push(
+        {
+          // url: "http://192.168.0.101:8083/Register.html",
+          // url:"./platforms/android/app/src/main/assets/dist/Register.js",
+          url: this.toVue("BottomTab"),
+          animated: "true"
+        },
+        event => {
+          modal.toast({
+            message: "callback:" + event
+          });
+        }
+      );
+    }
+  }
 };
 </script>
  
 <style scoped>
 .tabbar {
-    flex-direction: row;
-    justify-content: center;
-    background-color: #ffffff;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff;
 }
 .tab {
-    height: 120px;
-    width: 150px;
-    justify-content: center;
-    align-items: center;
+  height: 120px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
 }
 .active {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
 }
 .icon {
-    width: 45px;
-    height: 45px;
+  width: 45px;
+  height: 45px;
 }
 .title {
-    font-size: 35px;
-    color: #1e90ff;
-    margin-top: 10px;
+  font-size: 35px;
+  color: #1e90ff;
+  margin-top: 10px;
 }
 .tab-panels {
-    /* position: relative; */
-    width: 3750;
-    flex: 1;
-    flex-direction: row;
-    /* align-items: stretch; */
-    background-color: #f5f5f5;
-    transition: left 0.2s ease-in-out;
+  /* position: relative; */
+  width: 3750;
+  flex: 1;
+  flex-direction: row;
+  /* align-items: stretch; */
+  background-color: #f5f5f5;
+  transition: left 0.2s ease-in-out;
 }
 
 .panel {
-    width: 750px;
+  width: 750px;
 }
 .content {
-    font-size: 100px;
-    color: #707070;
+  font-size: 100px;
+  color: #707070;
 }
 .border-cell {
-    background-color: #f2f3f4;
-    width: 750px;
-    align-items: center;
-    justify-content: center;
-    border-bottom-width: 1px;
-    border-style: solid;
-    border-color: #e0e0e0;
+  background-color: #f2f3f4;
+  width: 750px;
+  align-items: center;
+  justify-content: center;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: #e0e0e0;
 }
 .cell {
-    border-color: #ffffff;
+  border-color: #ffffff;
 }
 .content {
-    width:  750px;
-    height: 300px;
-    border-bottom-width: 1px;
-    align-items: center;
-    justify-content: center;
+  width: 750px;
+  height: 300px;
+  border-bottom-width: 1px;
+  align-items: center;
+  justify-content: center;
 }
 .image {
-    width: 800px;
-    height: 300px;
+  width: 800px;
+  height: 300px;
 }
 .slider {
-    height: 300px;
-    border-width: 2px;
-    justify-content: flex-end;
-    align-items: center;
-    border-style: solid;
-    border-color: #41b883;
+  height: 300px;
+  border-width: 2px;
+  justify-content: flex-end;
+  align-items: center;
+  border-style: solid;
+  border-color: #41b883;
 }
 .title {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding-left: 20px;
-    width: 200px;
-    color: "#FFFFFF";
-    font-size: 36px;
-    line-height: 60px;
-    background-color: rgba((0), 0, 0, 0);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding-left: 20px;
+  width: 200px;
+  color: "#FFFFFF";
+  font-size: 36px;
+  line-height: 60px;
+  background-color: rgba((0), 0, 0, 0);
 }
 
 .indicator {
-    padding: 20px;
-    /* height: 300px;  */
-    item-color: green;
-    item-selected-color: #1e90ff;
-    item-size: 20px;
-    /* position: absolute; */
-    /* top: 200px;
-    left: 200px; */
+  width: 714px;
+  height: 200px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  item-color: red;
+  item-selectedcolor: blue;
+  item-size: 20px;
 }
 .warpper {
-    /* background-image: linear-gradient(to bottom, #f35bb6, #7b79f9); */
-    background-color: #ffffff;
-    flex: 1;
+  /* background-image: linear-gradient(to bottom, #f35bb6, #7b79f9); */
+  background-color: #ffffff;
+  flex: 1;
 }
 .toolbar-warpper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #1e90ff;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #309bf8;
 }
 
 .toolbar-text {
-    font-size: 35px;
-    color: #ffffff;
+  font-size: 35px;
+  color: #ffffff;
 }
 .toolbar-image {
-    width: 35px;
-    margin-left: 15px;
-    margin-right: 15px;
-    height: 35px;
+  width: 35px;
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 35px;
 }
 </style>
