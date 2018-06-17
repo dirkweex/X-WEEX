@@ -7,14 +7,15 @@
             <text class="title-text" style=" font-size:45px;color: #ffffff">我的电站</text>
             <image class="toobar-left" style="width:35px;height:35px;margin-right:35px"  @click="add"  :src="getUrl('add.png')"/>
         </div>
-
-
-
         <!-- 电站列表 -->
         <div>
-            <list>
+            <list class="list-warpper">
+                <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
+      <text class="indicator-text">Refreshing ...</text>
+      <loading-indicator class="indicator"></loading-indicator>
+    </refresh>
               <cell>
-                      <!-- 今日发电和今日总收益 -->
+         <!-- 今日发电和今日总收益 -->
         <div class="all-data">
             <div class="leftData">
                 <text class="du-color">今日发电总量</text>
@@ -70,23 +71,23 @@
 
               </cell>
                 <cell v-for="item in lists" :key="item">
-                    <div class="station-warpper">
+                    <div class="station-warpper" @click="itemClick">
                         <!-- left -->
                         <div class="a">
                             <image class="station-img" :src="getUrl('pic_house_small.png')"/>
                             <div class="aa">
-                                <text>{{item.title}}</text>
+                                <text class="item-text">{{item.title}}</text>
                                 <div class="b">
-                                    <text>功率</text>
-                                    <text>{{item.wa}}瓦</text>
+                                    <text class="item-text">功率</text>
+                                    <text class="item-text">{{item.wa}}瓦</text>
                                 </div>
                                 <div class="b">
-                                    <text>发电量</text>
-                                    <text>{{item.dianliang}}瓦</text>
+                                    <text class="item-text">发电量</text>
+                                    <text class="item-text">{{item.dianliang}}瓦</text>
                                 </div>
                                 <div class="b">
-                                    <text>发电效率</text>
-                                    <text>{{item.xiaolv}}瓦</text>
+                                    <text class="item-text">发电效率</text>
+                                    <text class="item-text">{{item.xiaolv}}瓦</text>
                                 </div>
                             </div>
 
@@ -94,17 +95,21 @@
                         <!-- right -->
                         <div class="ccc">
                             <text class="right-text">￥{{item.money}}</text>
-                            <text>发电收益</text>
+                            <text class="item-text">发电收益</text>
 
                         </div>
                     </div>
                 </cell>
+                    <loading class="loading" @loading="onloading" :display="loadinging ? 'show' : 'hide'">
+      <text class="indicator-text">Loading ...</text>
+      <loading-indicator class="indicator"></loading-indicator>
+    </loading>
             </list>
         </div>
     </div>
 </template>
 <script>
-// const modal = weex.requireModule("modal");
+const modal = weex.requireModule("modal");
 // const stream = weex.requireModule("stream");
 const navigator = weex.requireModule("navigator");
 import mixin from "./mixins/mixin.js";
@@ -112,6 +117,8 @@ export default {
   mixins: [mixin],
   data() {
     return {
+      refreshing: false,
+      loadinging: false,
       lists: [
         {
           title: "特斯电站",
@@ -152,6 +159,23 @@ export default {
     };
   },
   methods: {
+    itemClick: function() {
+      // modal.toast({
+      //   message: "这是itemClick",
+      //   duration: 2
+      // });
+       navigator.push(
+        {
+          url: this.toVue("AddDevice"),
+          animated: "true"
+        },
+        event => {
+          modal.toast({
+            message: "callback:" + event
+          });
+        }
+      );
+    },
     add: function() {
       navigator.push(
         {
@@ -167,17 +191,66 @@ export default {
           });
         }
       );
+    },
+    onrefresh(event) {
+      modal.toast({ message: "Refreshing", duration: 1 });
+      this.refreshing = true;
+      setTimeout(() => {
+        this.refreshing = false;
+      }, 2000);
+    },
+    onpullingdown(event) {
+      console.log("dy: " + event.dy);
+      console.log("pullingDistance: " + event.pullingDistance);
+      console.log("viewHeight: " + event.viewHeight);
+      console.log("type: " + type);
+    },
+    onloading(event) {
+      modal.toast({ message: "Loading", duration: 1 });
+      this.loadinging = true;
+      setTimeout(() => {
+        this.loadinging = false;
+      }, 2000);
     }
   }
 };
 </script>
 <style scoped>
+/* .list-warpper{
+  background-color: #ffffff;
+  flex: 1;
+} */
+.refresh {
+  width: 750;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.indicator-text {
+  color: #888888;
+  font-size: 42px;
+  text-align: center;
+}
+.indicator {
+  margin-top: 16px;
+  height: 40px;
+  width: 40px;
+  color: blue;
+}
+.item-text {
+  font-size: 35px;
+}
 .ccc {
   margin-top: 35px;
   margin-right: 15px;
 }
 .right-text {
   color: #ff0000;
+  font-size: 35px;
 }
 .aa {
   margin-left: 25px;
@@ -238,7 +311,7 @@ export default {
 .button-warpper {
   /* margin-top: 10px; */
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .button-warpper2 {
   flex-direction: row;
@@ -246,7 +319,7 @@ export default {
   margin-top: 30px;
 }
 .button {
-  font-size: 30px;
+  font-size: 35px;
   width: 200px;
   text-align: center;
   padding: 15px;
@@ -254,7 +327,7 @@ export default {
   border-style: solid;
   color: #ffffff;
   border-color: #ffffff;
-  background-color: #3fa2f9;
+  background-color: #309bf8;
   border-radius: 50px;
 }
 .button2 {
