@@ -2,11 +2,13 @@
   <div class="wrapper">
     <div class="setting-warpper">
       <!-- 标题栏 -->
-      <div class="toolbar-warpper">
-        <!-- <div class="title"> -->
-        <text class="toolbar-text">设置</text>
-        <!-- </div> -->
-      </div>
+            <!-- 设置 , 待封装。 -->
+            <div class="toobar" style="justify-content:space-between;align-items:center;flex-direction:row;background-color:#309bf8;height:100px;">
+                <image class="toobar-left" style="width:35px;height:35px;margin-left:35px" @click="back" />
+                <text class="title-text" style=" font-size:45px;color: #ffffff">设置</text>
+                <!-- :src="getUrl('add.png')"  -->
+                <image class="toobar-left" style="width:35px;height:35px;margin-right:35px" @click="add" />
+            </div>
 
       <!-- 下部分 -->
 

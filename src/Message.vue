@@ -1,32 +1,33 @@
 <template>
-  <div class="warpper">
-    <div class="Station-warpper">
-      <!-- 标题栏 -->
-      <div class="toolbar-warpper">
-        <!-- <image class="toolbar-image" @click="leftback" src="/web/assets/img/arrow_left.png" /> -->
-        <text class="toolbar-text">消息</text>
-        <!-- <image class="toolbar-image" @click="rightback" src="/web/assets/img/add.png" /> -->
-      </div>
+    <div class="warpper">
+        <div class="Station-warpper">
+            <!-- 消息 , 待封装。 -->
+            <div class="toobar" style="justify-content:space-between;align-items:center;flex-direction:row;background-color:#309bf8;height:100px;">
+                <image class="toobar-left" style="width:35px;height:35px;margin-left:35px" @click="back" />
+                <text class="title-text" style=" font-size:45px;color: #ffffff">消息</text>
+                <!-- :src="getUrl('add.png')"  -->
+                <image class="toobar-left" style="width:35px;height:35px;margin-right:35px" @click="add" />
+            </div>
 
-      <!-- 顶部菜单栏-2个页面 -->
-      <div>
-        <div class="tabbar">
-          <div class="tab active" :style="{left:activeTab*150+'px'}">
-          </div>
-          <div v-for="(tab,i) in tabs" :key="i" class="tab" @click="activeTab=i">
-            <text class="title">{{tab.title}}</text>
-          </div>
-        </div>
-        <div class="tab-panels" :style="{left:activeTab* -750+'px'}">
-          <div class="panel" v-for="(panel,pi) in panels" :key="pi">
-            <!-- <text class="content">{{panel.content}}</text> -->
-            <div :is="componentName"></div>
-          </div>
-        </div>
-      </div>
+            <!-- 顶部菜单栏-2个页面 -->
+            <div>
+                <div class="tabbar">
+                    <div class="tab active" :style="{left:activeTab*150+'px'}">
+                    </div>
+                    <div v-for="(tab,i) in tabs" :key="i" class="tab" @click="activeTab=i">
+                        <text class="title">{{tab.title}}</text>
+                    </div>
+                </div>
+                <div class="tab-panels" :style="{left:activeTab* -750+'px'}">
+                    <div class="panel" v-for="(panel,pi) in panels" :key="pi">
+                        <!-- <text class="content">{{panel.content}}</text> -->
+                        <div :is="componentName"></div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
-  </div>
 
 </template>
 <script>

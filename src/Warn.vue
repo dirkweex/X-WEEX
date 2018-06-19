@@ -1,15 +1,17 @@
 <template>
-  <list>
-    <cell v-for="item in lists" :key="item">
-      <div class="panel">
-        <div class="text-warpper">
-          <text class="text1">{{item.title}}</text>
-          <text class="text1">{{item.date}}</text>
-        </div>
-        <text>{{item.message}}</text>
-      </div>
-    </cell>
-  </list>
+    <div class="warpper">
+        <list>
+            <cell v-for="item in lists" :key="item">
+                <div class="panel">
+                    <div class="text-warpper">
+                        <text class="text1">{{item.title}}</text>
+                        <text class="text1">{{item.date}}</text>
+                    </div>
+                    <text class="text2">{{item.message}}</text>
+                </div>
+            </cell>
+        </list>
+    </div>
 </template>
 
 <script>
@@ -39,15 +41,22 @@ export default {
 </script>
 
 <style scoped>
+
+.text1 {
+    font-size: 35px;
+}
+.text2 {
+    font-size: 25px;
+}
 .text-warpper {
     flex-direction: row;
     justify-content: space-between;
-    background-color: #ffffff;
 }
 .panel {
     margin: 15px;
     border-width: 2px;
-    border-color: #FF0000;
+    border-color: #ff0000;
     padding: 15px;
+     background-color: #ffffff;
 }
 </style>

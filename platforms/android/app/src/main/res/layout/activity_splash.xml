@@ -3,7 +3,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:id="@+id/container"
-             android:background="#0099cc"
+             android:background="#2E9BF6"
              tools:context="com.weex.app.SplashActivity">
 
     <TextView android:id="@+id/fullscreen_content"

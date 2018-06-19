@@ -1,36 +1,36 @@
 <template>
-  <div class="login-bg">
-    <image :style="imageStyle" :src="getUrl('login_bg.png')" />
-    <div class="login-warpper">
-      <image class="logo" :src="getUrl('logo_login.png')" />
-      <text class="title-text">登录</text>
-      <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="false" value="" />
-      <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
-      <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" autofocus="false" value="" />
-      <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
-      <div class="remember-warpper">
-        <image class="remember-img" @click="remember" :src="getUrl('select1_select.png')" />
-        <text class="remember-text">记住我</text>
-        <text class="forget-text" @click="forget">忘记密码？</text>
-      </div>
-      <text class="button" @click="login">登录</text>
-      <text class="button" @click="register">注册</text>
-      <div class="chat-warpper">
-        <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
-        <text class="chat-text">社交账号登录</text>
-        <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
-      </div>
-      <div class="chat-warpper">
-        <image class="chat-img" @click="qq" :src="getUrl('qq.png')" />
-        <image class="chat-img" @click="wechat" :src="getUrl('wechat.png')" />
-        <image class="chat-img" @click="weibo" :src="getUrl('weibo.png')" />
-      </div>
-    </div>
-    <!-- <div class="input-wrapper">
+    <div class="login-bg">
+        <image :style="imageStyle" :src="getUrl('login_bg.png')" />
+        <div class="login-warpper">
+            <image class="logo" :src="getUrl('logo_login.png')" />
+            <text class="title-text">登录</text>
+            <input class="input" v-model="userNumber" type="text" @change="changeUserNumber" placeholder="用户名、手机号或邮箱" autofocus="false" value="" />
+            <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
+            <input class="input" v-model="userPassword" type="password" @change="changeUserPassword" placeholder="密码(至少8位)" autofocus="false" value="" />
+            <div style="width:500px;height:1px;background-color:rgb(235, 223, 223)" />
+            <div class="remember-warpper">
+                <image class="remember-img" @click="remember" :src="getUrl('select1_select.png')" />
+                <text class="remember-text">记住我</text>
+                <text class="forget-text" @click="forget">忘记密码？</text>
+            </div>
+            <text class="button" @click="login">登录</text>
+            <text class="button" @click="register">注册</text>
+            <div class="chat-warpper">
+                <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
+                <text class="chat-text">社交账号登录</text>
+                <div class="chat-line" style="width:120px;height:1px;background-color:#A4D3FC" />
+            </div>
+            <div class="chat-warpper">
+                <image class="chat-img" @click="qq" :src="getUrl('qq.png')" />
+                <image class="chat-img" @click="wechat" :src="getUrl('wechat.png')" />
+                <image class="chat-img" @click="weibo" :src="getUrl('weibo.png')" />
+            </div>
+        </div>
+        <!-- <div class="input-wrapper">
                         <text class="input-forget" onclick="findPassword">找回密码</text>
                         <text class="input-register" onclick="register">立即注册</text>
                     </div> -->
-  </div>
+    </div>
 </template>
 <script>
 const modal = weex.requireModule("modal");
@@ -91,13 +91,12 @@ export default {
                     {
                         // url: "http://192.168.0.100:8081/BottomTab.html",
                         // url: "file://assets/dist/BottomTab.js",
-                              url: this.toVue('BottomTab'),
-                        
+                        url: this.toVue("BottomTab"),
                         animated: "true"
                     },
                     event => {
                         modal.toast({
-                            message: "callback:" + event
+                            // message: "callback:" + event
                         });
                     }
                 );
@@ -111,7 +110,7 @@ export default {
                     {
                         // url: "http://192.168.0.100:8081/NewBuild.html",
                         // url: "file://assets/dist/NewBuild.js",
-                              url: this.toVue('NewBuild'),
+                        url: this.toVue("NewBuild"),
                         animated: "true"
                     },
                     event => {
@@ -141,7 +140,7 @@ export default {
                 {
                     // url: "http://192.168.0.101:8083/Register.html",
                     // url:"./platforms/android/app/src/main/assets/dist/Register.js",
-                    url: this.toVue('Register'),
+                    url: this.toVue("Register"),
                     animated: "true"
                 },
                 event => {
