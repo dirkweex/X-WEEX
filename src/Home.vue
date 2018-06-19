@@ -51,9 +51,9 @@
 
                     <!-- 收益曲线图之3个按钮 -->
                     <div class="button-warpper">
-                        <wxc-button text="功率" type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
-                        <wxc-button text="发电量" type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
-                        <wxc-button text="收益" type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+                        <wxc-button text="功率" type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked1"></wxc-button>
+                        <wxc-button text="发电量" type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked2"></wxc-button>
+                        <wxc-button text="收益" type="blue" size="medium" @wxcButtonClicked="wxcButtonClicked3"></wxc-button>
                     </div>
 
                     <!-- 收益曲线图之曲线图 -->
@@ -63,10 +63,10 @@
                     <!-- 收益曲线图之年月日 -->
                     <div class="button-warpper2">
 
-                        <wxc-button text="日" class="button2" size="small" backgroundColor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
-                        <wxc-button text="月" class="button3" size="small" backgroundcolor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
-                        <wxc-button text="年" class="button3" size="small" backgroundcolor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
-                        <wxc-button text="总" class="button3" size="small" backgroundcolor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked"></wxc-button>
+                        <wxc-button text="日" class="button2" size="small" backgroundColor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked4"></wxc-button>
+                        <wxc-button text="月" class="button3" size="small" backgroundcolor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked5"></wxc-button>
+                        <wxc-button text="年" class="button3" size="small" backgroundcolor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked6"></wxc-button>
+                        <wxc-button text="总" class="button3" size="small" backgroundcolor="#309bf8" borderRadius="90px" @wxcButtonClicked="wxcButtonClicked7"></wxc-button>
 
                         <image class="year-img" :src="getUrl('calendar.png')" />
                     </div>
