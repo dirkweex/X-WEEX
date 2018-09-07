@@ -11,5 +11,5 @@ weex.init(Vue);
 
 
 
-const App = require('..\\src\\NewBuild.vue');
+const App = require('../src/NewBuild.vue');
 new Vue(Vue.util.extend({el: '#root'}, App));

@@ -1,6 +1,7 @@
 const modal = weex.requireModule('modal');
 export default {
     methods: {
+        // 获取本地图片
         getUrl(name) {
             let platform = WXEnvironment.platform.toLowerCase();
             let platforms = {
@@ -15,6 +16,7 @@ export default {
             // modal.toast({ message: name, duration: 5 })
             return platforms[platform] + name
         },
+        // 跳转
         toVue(vueName) {
             let platform = WXEnvironment.platform.toLowerCase();
             let ip = "192.168.13.12:8081";

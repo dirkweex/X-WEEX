@@ -32,10 +32,6 @@ import com.weex.app.util.Constants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-/**
- * Created by guoshuyu on 2018/4/1.
- */
 public class WXPageSampleActivity extends AbsWeexActivity implements
         WXSDKInstance.NestedInstanceInterceptor {
 

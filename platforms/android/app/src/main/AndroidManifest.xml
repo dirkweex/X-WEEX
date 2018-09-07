@@ -13,7 +13,7 @@
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
-        android:name=".WXApplication"
+        android:name="com.weex.app.WXApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,23 +22,24 @@
         tools:overrideLibrary="com.taobao.android.dexposed"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.weex.app.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".WXPageActivity"
+            android:name="com.weex.app.WXPageActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".WXPageSampleActivity"
+            android:name="com.weex.app.WXPageSampleActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter tools:ignore="AppLinkUrlError">
@@ -56,14 +57,6 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation"/>
-        <activity android:name=".MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
-
-
-        </activity>
     </application>
 
 </manifest>
